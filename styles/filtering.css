@@ -1,0 +1,31 @@
+.filtering {
+  font-size: 120%;
+}
+.filtering .filter-type .content {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0 12px 0;
+  flex-direction: column;
+  align-items: baseline;
+}
+.filtering .filter-type .content a:hover {
+  text-decoration: underline;
+}
+.filtering .filter-type .filter-title {
+  cursor: pointer;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filtering .filter-type .toggle {
+  font-size: 24px;
+  margin-right: 10px;
+  transition: transform 0.3s;
+  display: flex;
+}
+.filtering .filter-type .closed {
+  transform: rotate(-180deg);
+}
+
+/*# sourceMappingURL=filtering.css.map */

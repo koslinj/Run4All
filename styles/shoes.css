@@ -1,0 +1,38 @@
+.shoes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.shoes .left {
+  border: 1px solid black;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.shoes .right {
+  padding-left: 10px;
+}
+.shoes .right .list {
+  display: flex;
+  gap: 20px;
+}
+.shoes .right .product-on-list {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width: 200px;
+  text-align: center;
+}
+.shoes .right .product-on-list a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.shoes .right .product-on-list a:hover .product-name {
+  text-decoration: underline;
+}
+.shoes .right .product-on-list p {
+  font-size: 120%;
+}
+
+/*# sourceMappingURL=shoes.css.map */

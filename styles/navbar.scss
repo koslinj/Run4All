@@ -1,0 +1,79 @@
+@import "globals";
+
+.navbar {
+  margin-bottom: 16px;
+
+  .first-nav {
+    @include flex-between;
+    padding-bottom: 10px;
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  .second-nav {
+    font-size: 120%;
+    border-top: 2px solid gray;
+    padding: 0 10px;
+    border-bottom: 2px solid gray;
+    @include flex-around;
+    margin: 0 auto;
+
+    .nav-category {
+      padding: 10px;
+      position: relative;
+      font-weight: 500;
+
+      &:hover::after {
+        content: "";
+        background: green;
+        width: 90%;
+        height: 2px;
+        position: absolute;
+        border-radius: 1px;
+        bottom: 4px;
+        left: 5%;
+      }
+    }
+  }
+
+  a:last-of-type .nav-category {
+    color: red;
+  }
+
+  .nav-icons {
+    display: flex;
+    gap: 20px;
+
+    .account, .cart {
+      @include flex-center;
+      flex-direction: column;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+
+        img {
+          scale: 1.2;
+        }
+      }
+
+      img {
+        transition-duration: 300ms;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .account, .cart {
+    img {
+      width: 20px;
+    }
+  }
+
+  .main-logo {
+    width: 150px;
+  }
+}

@@ -1,0 +1,28 @@
+$basic_green: #9AFF91;
+$mobile: 900px;
+
+@mixin lines {
+  content: "";
+  background: gray;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+}
+
+@mixin flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-around{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

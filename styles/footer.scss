@@ -1,0 +1,46 @@
+@import "globals";
+
+.footer {
+  .top {
+    @include flex-around;
+    flex-wrap: wrap;
+    background: $basic_green;
+    padding: 12px 0;
+    position: relative;
+    margin-bottom: 10px;
+
+    &::before {
+      @include lines;
+      top: -10px;
+    }
+
+    &::after {
+      @include lines;
+      bottom: -10px;
+    }
+
+    .item {
+      @include flex-center;
+      gap: 10px;
+    }
+  }
+
+  .down {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .info-section {
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 6px;
+          @include flex-between;
+        }
+      }
+    }
+  }
+}

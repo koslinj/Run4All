@@ -1,0 +1,71 @@
+.navbar {
+  margin-bottom: 16px;
+}
+.navbar .first-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.navbar .first-nav a {
+  cursor: pointer;
+}
+.navbar .second-nav {
+  font-size: 120%;
+  border-top: 2px solid gray;
+  padding: 0 10px;
+  border-bottom: 2px solid gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+.navbar .second-nav .nav-category {
+  padding: 10px;
+  position: relative;
+  font-weight: 500;
+}
+.navbar .second-nav .nav-category:hover::after {
+  content: "";
+  background: green;
+  width: 90%;
+  height: 2px;
+  position: absolute;
+  border-radius: 1px;
+  bottom: 4px;
+  left: 5%;
+}
+.navbar a:last-of-type .nav-category {
+  color: red;
+}
+.navbar .nav-icons {
+  display: flex;
+  gap: 20px;
+}
+.navbar .nav-icons .account, .navbar .nav-icons .cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.navbar .nav-icons .account:hover, .navbar .nav-icons .cart:hover {
+  text-decoration: underline;
+}
+.navbar .nav-icons .account:hover img, .navbar .nav-icons .cart:hover img {
+  scale: 1.2;
+}
+.navbar .nav-icons .account img, .navbar .nav-icons .cart img {
+  transition-duration: 300ms;
+}
+
+@media (max-width: 900px) {
+  .account img, .cart img {
+    width: 20px;
+  }
+  .main-logo {
+    width: 150px;
+  }
+}
+
+/*# sourceMappingURL=navbar.css.map */

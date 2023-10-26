@@ -1,0 +1,45 @@
+.shoes {
+  display: flex;
+  flex-wrap: wrap;
+
+  .left {
+    border: 1px solid black;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .right {
+    padding-left: 10px;
+
+    .list{
+      display: flex;
+      gap: 20px;
+    }
+
+    .product-on-list {
+      border: 1px solid black;
+      margin-bottom: 20px;
+      width: 200px;
+      text-align: center;
+
+      a{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        &:hover{
+          .product-name{
+            text-decoration: underline;
+          }
+        }
+      }
+
+      p{
+        font-size: 120%;
+      }
+    }
+  }
+}
