@@ -79,16 +79,16 @@ include_once('components/navbar.php');
     <h2>Registration</h2>
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+        <input id="email" type="email" name="email" required><br>
 
         <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+        <input id="password" type="password" name="password" required><br>
 
         <label for="name">Name:</label>
-        <input type="text" name="name" required><br>
+        <input id="name" type="text" name="name" required><br>
 
         <label for="surname">Surname:</label>
-        <input type="text" name="surname" required><br>
+        <input id="surname" type="text" name="surname" required><br>
 
         <button type="submit" name="register">Register</button>
     </form>
@@ -96,10 +96,10 @@ include_once('components/navbar.php');
     <h2>Login</h2>
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label for="login_email">Email:</label>
-        <input type="email" name="login_email" required><br>
+        <input id="login_email" type="email" name="login_email" required><br>
 
         <label for="login_password">Password:</label>
-        <input type="password" name="login_password" required><br>
+        <input id="login_password" type="password" name="login_password" required><br>
 
         <button type="submit" name="login">Login</button>
     </form>
