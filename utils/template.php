@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/filtering.css">
     <link rel="stylesheet" href="../styles/shoes.css">
+    <link rel="stylesheet" href="../styles/login_register.css">
     <link rel="stylesheet" href="../styles/product.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

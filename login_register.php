@@ -75,34 +75,46 @@ include_once('components/navbar.php');
 ?>
 
 
-<main>
-    <h2>Registration</h2>
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="email">Email:</label>
-        <input id="email" type="email" name="email" required><br>
+<main class="login_register">
+    <h2>Zaloguj się</h2>
+    <div class="container">
+        <div class="panel">
+            <p>Mam już konto</p>
+            <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <label for="login_email">Email:</label>
+                <input id="login_email" type="email" name="login_email" required><br>
 
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password" required><br>
+                <label for="login_password">Hasło:</label>
+                <input id="login_password" type="password" name="login_password" required><br>
 
-        <label for="name">Name:</label>
-        <input id="name" type="text" name="name" required><br>
+                <button type="submit" name="login">
+                    <img src="images/login_icon.png" alt="Login Icon" width="30px">
+                    Zaloguj się
+                </button>
+            </form>
+        </div>
+        <div class="panel">
+            <p>Jestem nowym użytkownikiem</p>
+            <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <label for="name">Imię:</label>
+                <input id="name" type="text" name="name" required><br>
 
-        <label for="surname">Surname:</label>
-        <input id="surname" type="text" name="surname" required><br>
+                <label for="surname">Nazwisko:</label>
+                <input id="surname" type="text" name="surname" required><br>
 
-        <button type="submit" name="register">Register</button>
-    </form>
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email" required><br>
 
-    <h2>Login</h2>
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="login_email">Email:</label>
-        <input id="login_email" type="email" name="login_email" required><br>
+                <label for="password">Hasło:</label>
+                <input id="password" type="password" name="password" required><br>
 
-        <label for="login_password">Password:</label>
-        <input id="login_password" type="password" name="login_password" required><br>
-
-        <button type="submit" name="login">Login</button>
-    </form>
+                <button type="submit" name="register">
+                    <img src="images/login_icon.png" alt="Login Icon" width="30px">
+                    Utwórz konto
+                </button>
+            </form>
+        </div>
+    </div>
 </main>
 
 <?php

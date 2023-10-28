@@ -1,0 +1,81 @@
+@import "globals";
+
+.login_register{
+  h2{
+    text-align: center;
+    font-size: 200%;
+    margin: 20px 0 40px 0;
+  }
+
+  .container{
+    @include flex-center;
+    align-items: baseline;
+    gap: 100px;
+    flex-wrap: wrap;
+
+    .panel{
+      background: #e5e5e5;
+      border: 1px solid black;
+      width: 400px;
+
+      .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 40px;
+
+        label{
+          display: block;
+          font-size: 120%;
+        }
+
+        input{
+          font-size: 120%;
+          padding: 6px 0;
+          margin-bottom: 10px;
+        }
+
+        button{
+          @include flex-center;
+          gap: 10px;
+          font-size: 120%;
+          font-weight: 500;
+          padding: 10px;
+          width: 200px;
+          margin: 0 auto;
+          background: white;
+          border: 3px solid black;
+
+          &:hover{
+            background: #e7e7e7;
+          }
+        }
+      }
+
+      p{
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+        font-size: 130%;
+        font-weight: 500;
+        background-color: $basic_green;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .login_register{
+    .container{
+      .panel {
+        width: 300px;
+
+        .form{
+          padding: 16px;
+        }
+      }
+    }
+  }
+
+}
