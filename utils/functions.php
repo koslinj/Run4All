@@ -19,3 +19,14 @@ function getCategoriesByProductId(int $productId)
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $categories;
 }
+
+function getUserByUserId(int $userId)
+{
+    global $conn;
+    $sql = "SELECT * FROM users WHERE userId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->execute();
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $users[0];
+}

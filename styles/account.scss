@@ -1,0 +1,10 @@
+.account{
+
+  .logout-link{
+    color: red;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
