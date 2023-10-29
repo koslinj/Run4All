@@ -21,7 +21,7 @@ include_once('components/navbar.php');
 ?>
 
 <main class="account">
-    <h1>Twoje konto</h1>
+    <h2>Twoje konto</h2>
     <p>Imię: <?php echo $user["name"]; ?></p>
     <p>Nazwisko: <?php echo $user["surname"]; ?></p>
     <a class="logout-link" href="utils/logout.php">Logout</a>

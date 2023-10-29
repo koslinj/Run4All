@@ -10,7 +10,7 @@
                     Moje Konto
                 </div>
             </a>
-            <a href="../../run4all/bracket.php">
+            <a href="../../run4all/cart.php">
                 <div class="cart">
                     <img src="../images/navbar/cart_icon.png" alt="Cart Icon" width="30px">
                     Koszyk

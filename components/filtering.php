@@ -43,5 +43,5 @@
             </a>
         </div>
     </div>
-    <script src="../components/filtering.js"></script>
+    <script src="../jsActions/filtering.js"></script>
 </section>

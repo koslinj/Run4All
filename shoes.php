@@ -1,54 +1,9 @@
 <?php
-require("utils/db.php");
+require("utils/functions.php");
 
-$whereClause = "";
-$params = array();
+list($params, $sql) = createQuery();
 
-// Check for category parameter
-if (isset($_GET['category'])) {
-    $category = $_GET['category'];
-    $whereClause .= "c.category = :category AND ";
-    $params[':category'] = $category;
-}
-
-if (isset($_GET['producer'])) {
-    $producer = $_GET['producer'];
-    $whereClause .= "pr.producer = :producer AND ";
-    $params[':producer'] = $producer;
-}
-
-$whereClause = rtrim($whereClause, 'AND ');
-
-$sql = "SELECT p.* FROM products as p";
-
-$sql .= " JOIN products_categories as pc ON p.productId = pc.productId 
-JOIN categories as c ON pc.categoryId = c.categoryId
-JOIN producers as pr ON pr.producerId = p.producerId";
-
-if (!empty($whereClause)) {
-    $sql .= " WHERE $whereClause";
-}
-
-try {
-    $stmt = $conn->prepare($sql);
-    $stmt->execute($params);
-    $originalArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $uniqueProductIds = [];
-    $products = [];
-
-    foreach ($originalArray as $item) {
-        $productId = $item['productId'];
-
-        // Check if the product ID is not already in the list of unique product IDs
-        if (!in_array($productId, $uniqueProductIds)) {
-            $products[] = $item; // Add the item to the filtered array
-            $uniqueProductIds[] = $productId; // Add the product ID to the list of unique IDs
-        }
-    }
-
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+$products = getProducts($params, $sql)
 ?>
 
 
@@ -73,6 +28,7 @@ include_once('components/navbar.php');
                             <img src="<?= $product["path"] ?>" alt="Shoe images" width="100%"/>
                             <p><?= $product["price"] ?></p>
                         </a>
+                        <button onclick="addToCart(<?= $product['productId']; ?>)">Do koszyka</button>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -80,6 +36,7 @@ include_once('components/navbar.php');
             <?php endif; ?>
         </div>
     </div>
+    <script src="jsActions/cart.js"></script>
 </main>
 
 <?php
