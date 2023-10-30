@@ -13,6 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
         // If the product is not in the cart, add it to the cart
         unset($_SESSION['cart'][$id]);
     }
+
+    if (isset($_SESSION['user_id'])) {
+        saveCartFromSession($_SESSION["cart"], $_SESSION['user_id']);
+    }
+
 } else {
     // Respond with an error message if the request is not valid
     http_response_code(400); // Bad Request

@@ -1,5 +1,7 @@
 <?php
 require("utils/db.php");
+require("utils/functions.php");
+
 session_start();
 
 // Check if user is logged in
@@ -54,6 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($row && password_verify($password, $row['password'])) {
                 // Successful login
                 $_SESSION['user_id'] = $row['userId'];
+                if (isset($_SESSION['cart'])) {
+                    $cart = $_SESSION["cart"];
+                    saveCartFromSession($cart, $row['userId']);
+                }else{
+                    $_SESSION["cart"] = getCartByUserId($row['userId']);
+                }
                 header("Location: account.php");
                 exit();
             } else {

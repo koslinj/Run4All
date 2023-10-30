@@ -23,6 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
         $_SESSION['cart'][$product['productId']] = $product;
     }
 
+    if (isset($_SESSION['user_id'])) {
+        saveCartFromSession($_SESSION["cart"], $_SESSION['user_id']);
+    }
+
 } else {
     // Respond with an error message if the request is not valid
     http_response_code(400); // Bad Request

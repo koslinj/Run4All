@@ -47,8 +47,8 @@ async function changeQuantity(productId, price, type) {
         else if(type === 'increment'){
             currentQuantity++;
         }
-        if(currentQuantity==0){
-            quantityElement.parentElement.remove();
+        if(currentQuantity===0){
+            quantityElement.parentElement.parentElement.remove();
         }
         quantityElement.innerText = currentQuantity;
 

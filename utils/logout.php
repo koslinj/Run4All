@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-// Destroy the session and log the user out
-session_destroy();
+// Delete the user id
+if (isset($_SESSION['user_id'])) {
+    unset($_SESSION['user_id']);
+}
 
 // Redirect to the login page
 header("Location: ../login_register.php");

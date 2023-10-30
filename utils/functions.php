@@ -94,3 +94,43 @@ function getProducts($params, $sql)
     }
     return $products;
 }
+
+function getCartByUserId(int $userId)
+{
+    global $conn;
+    $sql = "SELECT p.productId, p.productName, p.price, p.path, c.quantity
+            FROM carts as c JOIN products p on p.productId = c.productId 
+            WHERE userId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->execute();
+    $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $cart;
+}
+
+function clearCartInDb(int $userId)
+{
+    global $conn;
+    $sql = "DELETE FROM carts WHERE userId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->execute();
+}
+
+function saveCartFromSession($cart, int $userId)
+{
+    global $conn;
+    $sql = "DELETE FROM carts WHERE userId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->execute();
+
+    foreach ($cart as $product){
+        $sql = "INSERT INTO carts(userId, productId, quantity) VALUES(:userId, :productId, :quantity)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->bindParam(':productId', $product["productId"]);
+        $stmt->bindParam(':quantity', $product["quantity"]);
+        $stmt->execute();
+    }
+}
