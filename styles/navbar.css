@@ -60,7 +60,7 @@
 }
 
 @media (max-width: 900px) {
-  .account img, .cart img {
+  .nav-icons .account img, .nav-icons .cart img {
     width: 20px;
   }
   .main-logo {

@@ -1,0 +1,65 @@
+@import "globals";
+
+.cart {
+
+  .product-in-cart {
+    padding: 20px 10px;
+    @include flex-between;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .quantity-handler {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      img {
+        border: 1px solid black;
+        box-shadow: none;
+        cursor: pointer;
+        transition-duration: 300ms;
+        width: 30px;
+
+        &:hover{
+          scale: 1.2;
+        }
+      }
+    }
+
+    img {
+      box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px 1px;
+    }
+
+    i {
+      color: gray;
+    }
+
+    p {
+      font-size: 120%;
+      margin: 2px;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .clear-cart {
+    color: red;
+    font-style: italic;
+    font-size: 120%;
+  }
+}
+
+@media (max-width: $mobile) {
+  .cart {
+    .product-in-cart {
+      gap: 20px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}

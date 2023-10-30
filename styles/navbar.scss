@@ -67,9 +67,11 @@
 }
 
 @media (max-width: $mobile) {
-  .account, .cart {
-    img {
-      width: 20px;
+  .nav-icons{
+    .account, .cart {
+      img {
+        width: 20px;
+      }
     }
   }
 
