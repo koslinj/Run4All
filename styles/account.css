@@ -1,0 +1,8 @@
+.account .logout-link {
+  color: red;
+}
+.account .logout-link:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=account.css.map */
