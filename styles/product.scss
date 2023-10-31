@@ -1,5 +1,47 @@
+@import "globals";
+
 .product {
-  .category{
-    margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  .desc-part{
+    padding: 20px;
+    h2{
+      font-size: 160%;
+      margin: 8px 0;
+    }
+
+    .title{
+      margin: 20px 0;
+      font-size: 160%;
+      font-style: italic;
+    }
+
+    .categories{
+      margin: 20px 0 0 0;
+      font-size: 110%;
+
+      a{
+        margin-right: 20px;
+        font-style: italic;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+
+      small{
+        color: gray;
+        display: block;
+      }
+    }
   }
+  .image-part{
+    padding: 20px;
+  }
+  .price-part{
+    padding: 20px;
+  }
+
 }

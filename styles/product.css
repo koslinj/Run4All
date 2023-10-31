@@ -1,5 +1,40 @@
-.product .category {
+.product {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.product .desc-part {
+  padding: 20px;
+}
+.product .desc-part h2 {
+  font-size: 160%;
+  margin: 8px 0;
+}
+.product .desc-part .title {
+  margin: 20px 0;
+  font-size: 160%;
+  font-style: italic;
+}
+.product .desc-part .categories {
+  margin: 20px 0 0 0;
+  font-size: 110%;
+}
+.product .desc-part .categories a {
   margin-right: 20px;
+  font-style: italic;
+}
+.product .desc-part .categories a:hover {
+  text-decoration: underline;
+}
+.product .desc-part .categories small {
+  color: gray;
+  display: block;
+}
+.product .image-part {
+  padding: 20px;
+}
+.product .price-part {
+  padding: 20px;
 }
 
 /*# sourceMappingURL=product.css.map */
