@@ -28,7 +28,6 @@ include_once('components/navbar.php');
                             <img src="<?= $product["path"] ?>" alt="Shoe images" width="100%"/>
                             <p><?= $product["price"] ?></p>
                         </a>
-                        <button onclick="addToCart(<?= $product['productId']; ?>)">Do koszyka</button>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -36,7 +35,6 @@ include_once('components/navbar.php');
             <?php endif; ?>
         </div>
     </div>
-    <script src="jsActions/cart.js"></script>
 </main>
 
 <?php

@@ -1,11 +1,13 @@
 async function addToCart(productId) {
     try {
+        let sizeSelect = document.getElementById("size");
+        let chosenSize = sizeSelect.value;
         const response = await fetch("serverActions/addToCart.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
             },
-            body: "product_id=" + productId, // Send the data
+            body: "product_id=" + productId + "&size=" + chosenSize, // Send the data
         });
 
         if (!response.ok) {
@@ -19,7 +21,7 @@ async function addToCart(productId) {
     }
 }
 
-async function changeQuantity(productId, price, type) {
+async function changeQuantity(productId, price, size, type) {
     try {
         let url = "serverActions/removeFromCart.php"
         if(type === 'increment'){
@@ -30,15 +32,15 @@ async function changeQuantity(productId, price, type) {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
             },
-            body: "product_id=" + productId, // Send the data
+            body: "product_id=" + productId + "&size=" + size, // Send the data
         });
 
         if (!response.ok) {
             throw new Error("Error adding the product to the cart: " + response.status);
         }
 
-        const quantityElement = document.getElementById("quantity_" + productId);
-        const fullElement = document.getElementById("full_" + productId);
+        const quantityElement = document.getElementById("quantity_" + productId + size);
+        const fullElement = document.getElementById("full_" + productId + size);
 
         let currentQuantity = parseInt(quantityElement.innerText, 10);
         if (type === 'decrement'){

@@ -28,3 +28,16 @@ function addQueryParam(key, value) {
 
     window.location.href = updatedURL;
 }
+
+function fromProductToFiltering(key, value) {
+    var currentURL = window.location.href;
+    var url = new URL(currentURL);
+    var searchParams = url.searchParams;
+
+    searchParams.delete("productName");
+    searchParams.append(key, value);
+
+    var updatedURL = 'shoes.php?' + url.searchParams.toString();
+
+    window.location.href = updatedURL;
+}

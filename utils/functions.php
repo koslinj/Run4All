@@ -30,6 +30,26 @@ function getCategoriesByProductId(int $productId)
     return $categories;
 }
 
+function getSizesByProductId(int $productId)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT size FROM sizes WHERE productId = :id");
+    $stmt->bindParam(':id', $productId);
+    $stmt->execute();
+    $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $sizes;
+}
+
+function getProducerByProducerId(int $producerId)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM producers WHERE producerId = :id");
+    $stmt->bindParam(':id', $producerId);
+    $stmt->execute();
+    $prooducers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $prooducers[0];
+}
+
 function getUserByUserId(int $userId)
 {
     global $conn;
@@ -98,7 +118,7 @@ function getProducts($params, $sql)
 function getCartByUserId(int $userId)
 {
     global $conn;
-    $sql = "SELECT p.productId, p.productName, p.price, p.path, c.quantity
+    $sql = "SELECT p.productId, p.productName, p.price, p.path, c.quantity, c.size
             FROM carts as c JOIN products p on p.productId = c.productId 
             WHERE userId = :id";
     $stmt = $conn->prepare($sql);
@@ -126,11 +146,12 @@ function saveCartFromSession($cart, int $userId)
     $stmt->execute();
 
     foreach ($cart as $product){
-        $sql = "INSERT INTO carts(userId, productId, quantity) VALUES(:userId, :productId, :quantity)";
+        $sql = "INSERT INTO carts(userId, productId, quantity, size) VALUES(:userId, :productId, :quantity, :size)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':userId', $userId);
         $stmt->bindParam(':productId', $product["productId"]);
         $stmt->bindParam(':quantity', $product["quantity"]);
+        $stmt->bindParam(':size', $product["size"]);
         $stmt->execute();
     }
 }

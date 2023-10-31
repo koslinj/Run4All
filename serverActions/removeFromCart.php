@@ -2,16 +2,16 @@
 require("../utils/functions.php");
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isset($_POST['size'])) {
 
-    $id = $_POST['product_id'];
+    $key = $_POST['product_id'] . $_POST['size'];
     // Check if the product is already in the cart
-    if ($_SESSION['cart'][$id]['quantity'] > 1) {
+    if ($_SESSION['cart'][$key]['quantity'] > 1) {
         // If the product is in the cart, update the quantity
-        $_SESSION['cart'][$id]['quantity'] -= 1;
+        $_SESSION['cart'][$key]['quantity'] -= 1;
     } else {
         // If the product is not in the cart, add it to the cart
-        unset($_SESSION['cart'][$id]);
+        unset($_SESSION['cart'][$key]);
     }
 
     if (isset($_SESSION['user_id'])) {

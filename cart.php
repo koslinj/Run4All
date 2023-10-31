@@ -28,25 +28,29 @@ include_once('components/navbar.php');
                     <i>Nazwa</i>
                 </div>
                 <div>
+                    <p><?= $product["size"] ?></p>
+                    <i>Rozmiar</i>
+                </div>
+                <div>
                     <p><?= $product["price"] ?> zł</p>
                     <i>Cena</i>
                 </div>
                 <div>
-                    <p id="quantity_<?= $product["productId"] ?>">
+                    <p id="quantity_<?= $product["productId"] . $product["size"] ?>">
                         <?= $product["quantity"] ?>
                     </p>
                     <i>Ilość</i>
                 </div>
                 <div>
-                    <p id="full_<?= $product["productId"] ?>">
+                    <p id="full_<?= $product["productId"] . $product["size"] ?>">
                         <?= number_format($product["quantity"] * $product["price"], 2) ?> zł
                     </p>
                     <i>Łącznie</i>
                 </div>
                 <div class="quantity-handler">
-                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, 'increment')"
+                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, <?= $product['size']; ?>, 'increment')"
                          src="images/up_arrow_icon.png" alt="Up Arrow Icon" width="30px">
-                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, 'decrement')"
+                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, <?= $product['size']; ?>, 'decrement')"
                          src="images/down_arrow_icon.png" alt="Down Arrow Icon" width="30px">
                 </div>
             </div>
