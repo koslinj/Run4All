@@ -17,10 +17,21 @@
   gap: 20px;
 }
 .shoes .right .product-on-list {
-  border: 1px solid black;
+  border: 1px solid gray;
   margin-bottom: 20px;
   width: 200px;
   text-align: center;
+}
+.shoes .right .product-on-list .producer-image {
+  margin: 10px auto;
+}
+.shoes .right .product-on-list .product-image {
+  min-height: 200px;
+  object-fit: contain;
+}
+.shoes .right .product-on-list .product-price {
+  font-weight: 500;
+  font-size: 130%;
 }
 .shoes .right .product-on-list a {
   display: flex;
@@ -28,11 +39,15 @@
   justify-content: space-between;
   height: 100%;
 }
+.shoes .right .product-on-list a:hover {
+  box-shadow: gray 0 0 7px 1px;
+}
 .shoes .right .product-on-list a:hover .product-name {
   text-decoration: underline;
 }
 .shoes .right .product-on-list p {
   font-size: 120%;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=shoes.css.map */

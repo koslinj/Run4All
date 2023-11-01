@@ -19,10 +19,24 @@
     }
 
     .product-on-list {
-      border: 1px solid black;
+      border: 1px solid gray;
       margin-bottom: 20px;
       width: 200px;
       text-align: center;
+
+      .producer-image{
+        margin: 10px auto;
+      }
+
+      .product-image{
+        min-height: 200px;
+        object-fit: contain;
+      }
+
+      .product-price{
+        font-weight: 500;
+        font-size: 130%;
+      }
 
       a{
         display: flex;
@@ -31,6 +45,8 @@
         height: 100%;
 
         &:hover{
+          box-shadow: gray 0 0 7px 1px;
+
           .product-name{
             text-decoration: underline;
           }
@@ -39,6 +55,7 @@
 
       p{
         font-size: 120%;
+        padding: 10px;
       }
     }
   }

@@ -24,9 +24,10 @@ include_once('components/navbar.php');
                 <?php foreach ($products as $product): ?>
                     <div class='product-on-list'>
                         <a href="product.php?productName=<?= urlencode($product["productName"]) ?>">
+                            <img class="product-image" src="<?= $product["path"] ?>" alt="Shoe images" width="100%"/>
+                            <img class="producer-image" src="<?= $product["producerPath"] ?>" alt="Producer images" width="40%"/>
                             <p class="product-name"><?= $product["productName"] ?></p>
-                            <img src="<?= $product["path"] ?>" alt="Shoe images" width="100%"/>
-                            <p><?= $product["price"] ?></p>
+                            <p class="product-price"><?= $product["price"] ?> zł</p>
                         </a>
                     </div>
                 <?php endforeach; ?>

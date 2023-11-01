@@ -82,7 +82,7 @@ function createQuery(): array
 
     $whereClause = rtrim($whereClause, 'AND ');
 
-    $sql = "SELECT p.* FROM products as p";
+    $sql = "SELECT p.*, pr.path as producerPath FROM products as p";
 
     $sql .= " JOIN products_categories as pc ON p.productId = pc.productId 
 JOIN categories as c ON pc.categoryId = c.categoryId
