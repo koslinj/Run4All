@@ -61,7 +61,7 @@ function getUserByUserId(int $userId)
     return $users[0];
 }
 
-function createQuery(): array
+function createQuery($type): array
 {
     $whereClause = "";
     $params = array();
@@ -80,13 +80,24 @@ function createQuery(): array
         $params[':producer'] = $producer;
     }
 
+    // Check for size parameter
+    if (isset($_GET['size'])) {
+        $size = $_GET['size'];
+        $whereClause .= "s.size = :size AND ";
+        $params[':size'] = $size;
+    }
+
+    $whereClause .= "c.type = :type AND ";
+    $params[':type'] = $type;
+
     $whereClause = rtrim($whereClause, 'AND ');
 
     $sql = "SELECT p.*, pr.path as producerPath FROM products as p";
 
     $sql .= " JOIN products_categories as pc ON p.productId = pc.productId 
 JOIN categories as c ON pc.categoryId = c.categoryId
-JOIN producers as pr ON pr.producerId = p.producerId";
+JOIN producers as pr ON pr.producerId = p.producerId
+JOIN sizes as s ON s.productId = p.productId";
 
     if (!empty($whereClause)) {
         $sql .= " WHERE $whereClause";
@@ -154,4 +165,33 @@ function saveCartFromSession($cart, int $userId)
         $stmt->bindParam(':size', $product["size"]);
         $stmt->execute();
     }
+}
+
+function getAllCategories($type)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM categories WHERE type = :type");
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $categories;
+}
+
+function getAllProducers()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM producers");
+    $stmt->execute();
+    $producers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $producers;
+}
+
+function getAllSizes($type)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT DISTINCT size FROM sizes WHERE type = :type ORDER BY size");
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $sizes;
 }

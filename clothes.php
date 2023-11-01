@@ -1,14 +1,14 @@
 <?php
 require("utils/functions.php");
 
-list($params, $sql) = createQuery('buty');
+list($params, $sql) = createQuery('ubrania');
 
 $products = getProducts($params, $sql)
 ?>
 
 
 <?php
-$currentPage = 'RUN 4 ALL | Buty';
+$currentPage = 'RUN 4 ALL | Ubrania';
 include_once('utils/template.php');
 include_once('components/navbar.php');
 ?>
@@ -16,13 +16,13 @@ include_once('components/navbar.php');
 <main class="product-page">
     <nav class="left">
         <?php
-        $categories = getAllCategories("buty");
-        $sizes = getAllSizes("buty");
+        $categories = getAllCategories("ubrania");
+        $sizes = getAllSizes("ubrania");
         include_once('components/filtering.php');
         ?>
     </nav>
     <div class="right">
-        <h2>Buty</h2>
+        <h2>Ubrania</h2>
         <div class="list">
             <?php if (!empty($products)): ?>
                 <?php foreach ($products as $product): ?>
@@ -45,3 +45,4 @@ include_once('components/navbar.php');
 <?php
 include_once('components/footer.php');
 ?>
+

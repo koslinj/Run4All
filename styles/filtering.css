@@ -1,6 +1,9 @@
 .filtering {
   font-size: 120%;
 }
+.filtering .filter-type {
+  margin-bottom: 30px;
+}
 .filtering .filter-type .content {
   display: flex;
   gap: 10px;
@@ -8,12 +11,15 @@
   flex-direction: column;
   align-items: baseline;
 }
+.filtering .filter-type .content .clear-filtering {
+  color: red;
+}
 .filtering .filter-type .content a:hover {
   text-decoration: underline;
 }
 .filtering .filter-type .filter-title {
   cursor: pointer;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;

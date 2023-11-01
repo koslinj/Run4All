@@ -4,6 +4,7 @@
   font-size: 120%;
 
   .filter-type{
+    margin-bottom: 30px;
 
     .content{
       display: flex;
@@ -12,6 +13,10 @@
       flex-direction: column;
       align-items: baseline;
 
+      .clear-filtering{
+        color: red;
+      }
+
       a:hover{
         text-decoration: underline;
       }
@@ -19,7 +24,7 @@
 
     .filter-title{
       cursor: pointer;
-      border: 1px solid black;
+      border-bottom: 1px solid black;
       @include flex-between;
     }
 

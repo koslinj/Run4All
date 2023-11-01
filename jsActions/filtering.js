@@ -5,9 +5,7 @@ function toggleContent(element) {
     if (content.style.display === "flex" || content.style.display === "") {
         content.style.display = "none";
         arrow.classList.add("closed");
-        console.log("W ifie")
     } else {
-        console.log("W elsie")
         content.style.display = "flex";
         arrow.classList.remove("closed");
     }
@@ -19,8 +17,9 @@ function addQueryParam(key, value) {
     var searchParams = url.searchParams;
 
     if (searchParams.has(key)) {
-        searchParams.set(key, value);
-    } else {
+        if(value !== "clear") searchParams.set(key, value);
+        else searchParams.delete(key)
+    } else if(value !== "clear") {
         searchParams.append(key, value);
     }
 

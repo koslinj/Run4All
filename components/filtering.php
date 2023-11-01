@@ -7,17 +7,13 @@
             </div>
         </div>
         <div class="content">
-            <a href="#" onclick="addQueryParam('category', 'Na asfalt'); return false;">
-                Na asfalt
-            </a>
-            <a href="#" onclick="addQueryParam('category', 'Terenowe'); return false;">
-                Terenowe
-            </a>
-            <a href="#" onclick="addQueryParam('category', 'Startowe'); return false;">
-                Startowe
-            </a>
-            <a href="#" onclick="addQueryParam('category', 'Kolce do sprintu'); return false;">
-                Kolce do sprintu
+            <?php foreach ($categories as $category): ?>
+                <a href="#" onclick="addQueryParam('category', '<?= $category["category"] ?>'); return false;">
+                    <?= $category["category"] ?>
+                </a>
+            <?php endforeach; ?>
+            <a class="clear-filtering" href="#" onclick="addQueryParam('category', 'clear'); return false;">
+                Wyczyść
             </a>
         </div>
     </div>
@@ -29,17 +25,32 @@
             </div>
         </div>
         <div class="content">
-            <a href="#" onclick="addQueryParam('producer', 'Nike'); return false;">
-                Nike
+            <?php $producers = getAllProducers(); ?>
+            <?php foreach ($producers as $producer): ?>
+                <a href="#" onclick="addQueryParam('producer', '<?= $producer["producer"] ?>'); return false;">
+                    <?= $producer["producer"] ?>
+                </a>
+            <?php endforeach; ?>
+            <a class="clear-filtering" href="#" onclick="addQueryParam('producer', 'clear'); return false;">
+                Wyczyść
             </a>
-            <a href="#" onclick="addQueryParam('producer', 'Asics'); return false;">
-                Asics
-            </a>
-            <a href="#" onclick="addQueryParam('producer', 'Adidas'); return false;">
-                Adidas
-            </a>
-            <a href="#" onclick="addQueryParam('producer', 'New Balance'); return false;">
-                New Balance
+        </div>
+    </div>
+    <div class="filter-type">
+        <div class="filter-title" onclick="toggleContent(this)">
+            Rozmiary
+            <div class="toggle">
+                <img src="../images/down_arrow_icon.png" alt="Arrow Icon" width="30px">
+            </div>
+        </div>
+        <div class="content">
+            <?php foreach ($sizes as $size): ?>
+                <a href="#" onclick="addQueryParam('size', '<?= $size["size"] ?>'); return false;">
+                    <?= $size["size"] ?>
+                </a>
+            <?php endforeach; ?>
+            <a class="clear-filtering" href="#" onclick="addQueryParam('size', 'clear'); return false;">
+                Wyczyść
             </a>
         </div>
     </div>

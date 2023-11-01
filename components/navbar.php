@@ -24,7 +24,7 @@
                 Buty
             </div>
         </a>
-        <a href="">
+        <a href="../../run4all/clothes.php">
             <div class="nav-category">
                 Ubrania
             </div>

@@ -48,9 +48,9 @@ include_once('components/navbar.php');
                     <i>Łącznie</i>
                 </div>
                 <div class="quantity-handler">
-                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, <?= $product['size']; ?>, 'increment')"
+                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, '<?= $product['size']; ?>', 'increment')"
                          src="images/up_arrow_icon.png" alt="Up Arrow Icon" width="30px">
-                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, <?= $product['size']; ?>, 'decrement')"
+                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, '<?= $product['size']; ?>', 'decrement')"
                          src="images/down_arrow_icon.png" alt="Down Arrow Icon" width="30px">
                 </div>
             </div>
