@@ -43,7 +43,7 @@
                 <img src="../images/down_arrow_icon.png" alt="Arrow Icon" width="30px">
             </div>
         </div>
-        <div class="content">
+        <div class="content size-filter">
             <?php foreach ($sizes as $size): ?>
                 <a href="#" onclick="addQueryParam('size', '<?= $size["size"] ?>'); return false;">
                     <?= $size["size"] ?>

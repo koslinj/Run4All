@@ -6,6 +6,7 @@
 }
 .filtering .filter-type .content {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 8px 0 12px 0;
   flex-direction: column;
@@ -14,8 +15,14 @@
 .filtering .filter-type .content .clear-filtering {
   color: red;
 }
+.filtering .filter-type .content a {
+  padding: 2px 4px;
+}
 .filtering .filter-type .content a:hover {
   text-decoration: underline;
+}
+.filtering .filter-type .content.size-filter {
+  flex-direction: row;
 }
 .filtering .filter-type .filter-title {
   cursor: pointer;

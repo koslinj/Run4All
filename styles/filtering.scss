@@ -8,6 +8,7 @@
 
     .content{
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
       margin: 8px 0 12px 0;
       flex-direction: column;
@@ -17,9 +18,17 @@
         color: red;
       }
 
+      a{
+        padding: 2px 4px;
+      }
+
       a:hover{
         text-decoration: underline;
       }
+    }
+
+    .content.size-filter{
+      flex-direction: row;
     }
 
     .filter-title{
