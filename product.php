@@ -24,7 +24,7 @@ include_once('components/navbar.php');
             <div class="categories">
                 <small>Kategorie</small>
                 <?php foreach ($categories as $cat): ?>
-                    <a href="#" onclick="fromProductToFiltering('category', '<?= $cat["category"] ?>'); return false;">
+                    <a href="#" onclick="fromProductToFiltering('category', '<?= $cat["category"] ?>', '<?= $cat["type"] ?>'); return false;">
                         <?= $cat["category"] ?>
                     </a>
                 <?php endforeach; ?>

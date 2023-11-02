@@ -1,10 +1,9 @@
 .product {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-.product .desc-part {
-  padding: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
 }
 .product .desc-part h2 {
   font-size: 160%;
@@ -30,11 +29,50 @@
   color: gray;
   display: block;
 }
-.product .image-part {
-  padding: 20px;
-}
 .product .price-part {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.product .price-part select {
+  font-size: 130%;
+  padding: 4px 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.product .price-part button {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  background: #9AFF91;
+  font-size: 130%;
+  font-weight: 500;
+  border: 3px solid black;
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+.product .price-part button:hover {
+  scale: 1.15;
+  box-shadow: 0 0 10px 1px;
+}
+.product .price-part p {
+  font-size: 140%;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+  .product .image-part img {
+    width: 400px;
+  }
+}
+@media (max-width: 900px) {
+  .product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .product .image-part img {
+    width: 300px;
+  }
 }
 
 /*# sourceMappingURL=product.css.map */
