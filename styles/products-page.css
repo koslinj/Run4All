@@ -1,52 +1,52 @@
-.product-page {
+.products-page {
   display: flex;
   flex-wrap: wrap;
 }
-.product-page .left {
+.products-page .left {
   min-width: 220px;
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
-.product-page .right {
+.products-page .right {
   padding-left: 10px;
 }
-.product-page .right .list {
+.products-page .right .list {
   display: flex;
   gap: 20px;
 }
-.product-page .right .product-on-list {
+.products-page .right .product-on-list {
   border: 1px solid gray;
   margin-bottom: 20px;
   width: 200px;
   text-align: center;
 }
-.product-page .right .product-on-list .producer-image {
+.products-page .right .product-on-list .producer-image {
   margin: 10px auto;
 }
-.product-page .right .product-on-list .product-image {
+.products-page .right .product-on-list .product-image {
   min-height: 200px;
   object-fit: contain;
 }
-.product-page .right .product-on-list .product-price {
+.products-page .right .product-on-list .product-price {
   font-weight: 500;
   font-size: 130%;
 }
-.product-page .right .product-on-list a {
+.products-page .right .product-on-list a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-.product-page .right .product-on-list a:hover {
+.products-page .right .product-on-list a:hover {
   box-shadow: gray 0 0 7px 1px;
 }
-.product-page .right .product-on-list a:hover .product-name {
+.products-page .right .product-on-list a:hover .product-name {
   text-decoration: underline;
 }
-.product-page .right .product-on-list p {
+.products-page .right .product-on-list p {
   font-size: 120%;
   padding: 10px;
 }
 
-/*# sourceMappingURL=product-page.css.map */
+/*# sourceMappingURL=products-page.css.map */

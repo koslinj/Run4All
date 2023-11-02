@@ -13,7 +13,7 @@ include_once('utils/template.php');
 include_once('components/navbar.php');
 ?>
 
-<main class="product-page">
+<main class="products-page">
     <nav class="left">
         <?php
         $categories = getAllCategories("ubrania");
