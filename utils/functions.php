@@ -61,6 +61,17 @@ function getUserByUserId(int $userId)
     return $users[0];
 }
 
+function getAddressesByUserId(int $userId)
+{
+    global $conn;
+    $sql = "SELECT * FROM addresses WHERE userId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->execute();
+    $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $addresses;
+}
+
 function createQuery($type): array
 {
     $whereClause = "";
@@ -165,6 +176,18 @@ function saveCartFromSession($cart, int $userId)
         $stmt->bindParam(':size', $product["size"]);
         $stmt->execute();
     }
+}
+
+function updateAddress(int $addressId, $town, $street, $number)
+{
+    global $conn;
+    $sql = "UPDATE addresses SET town = :town, street = :street, number = :number WHERE addressId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $addressId);
+    $stmt->bindParam(':town', $town);
+    $stmt->bindParam(':street', $street);
+    $stmt->bindParam(':number', $number);
+    $stmt->execute();
 }
 
 function getAllCategories($type)

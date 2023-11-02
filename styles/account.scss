@@ -1,10 +1,85 @@
-.account{
+@import "globals";
 
-  .logout-link{
-    color: red;
+main.account {
+  display: flex;
+  gap: 40px;
+  position: relative;
 
-    &:hover{
+  h3{
+    font-size: 130%;
+  }
+
+  .logout-link {
+    background-color: rgba(255, 0, 0, 0.5);
+    font-size: 120%;
+    font-weight: 500;
+    position: absolute;
+    bottom: 0;
+    padding: 12px;
+    border: 3px solid black;
+    border-radius: 10px;
+    transition-duration: 300ms;
+    @include flex-center;
+
+    &:hover {
       text-decoration: underline;
+      scale: 1.15;
+    }
+  }
+
+  .field-type {
+    color: gray;
+    font-style: italic;
+    font-size: 120%;
+  }
+
+  .field-value {
+    font-weight: 500;
+    font-size: 130%;
+    margin-bottom: 10px;
+  }
+
+  .addresses-info{
+
+    .fields-and-edit{
+      @include flex-between;
+      gap: 12px;
+
+      img{
+        cursor: pointer;
+        transition-duration: 200ms;
+
+        &:hover{
+          scale: 1.3;
+          rotate: 45deg;
+        }
+      }
+    }
+
+    form{
+      padding: 16px 0;
+      gap: 10px;
+      flex-direction: column;
+      font-size: 120%;
+
+      input{
+        font-size: 100%;
+      }
+
+      button{
+        background-color: $basic_green;
+        padding: 8px;
+        margin: 0 auto;
+        border: 3px solid black;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 110%;
+        transition-duration: 300ms;
+
+        &:hover{
+          scale: 1.1;
+        }
+      }
     }
   }
 }

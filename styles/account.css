@@ -1,8 +1,74 @@
-.account .logout-link {
-  color: red;
+main.account {
+  display: flex;
+  gap: 40px;
+  position: relative;
 }
-.account .logout-link:hover {
+main.account h3 {
+  font-size: 130%;
+}
+main.account .logout-link {
+  background-color: rgba(255, 0, 0, 0.5);
+  font-size: 120%;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+  padding: 12px;
+  border: 3px solid black;
+  border-radius: 10px;
+  transition-duration: 300ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main.account .logout-link:hover {
   text-decoration: underline;
+  scale: 1.15;
+}
+main.account .field-type {
+  color: gray;
+  font-style: italic;
+  font-size: 120%;
+}
+main.account .field-value {
+  font-weight: 500;
+  font-size: 130%;
+  margin-bottom: 10px;
+}
+main.account .addresses-info .fields-and-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+main.account .addresses-info .fields-and-edit img {
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+main.account .addresses-info .fields-and-edit img:hover {
+  scale: 1.3;
+  rotate: 45deg;
+}
+main.account .addresses-info form {
+  padding: 16px 0;
+  gap: 10px;
+  flex-direction: column;
+  font-size: 120%;
+}
+main.account .addresses-info form input {
+  font-size: 100%;
+}
+main.account .addresses-info form button {
+  background-color: #9AFF91;
+  padding: 8px;
+  margin: 0 auto;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 110%;
+  transition-duration: 300ms;
+}
+main.account .addresses-info form button:hover {
+  scale: 1.1;
 }
 
 /*# sourceMappingURL=account.css.map */
