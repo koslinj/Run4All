@@ -17,9 +17,9 @@ function addQueryParam(key, value) {
     var searchParams = url.searchParams;
 
     if (searchParams.has(key)) {
-        if(value !== "clear") searchParams.set(key, value);
+        if (value !== "clear") searchParams.set(key, value);
         else searchParams.delete(key)
-    } else if(value !== "clear") {
+    } else if (value !== "clear") {
         searchParams.append(key, value);
     }
 
@@ -28,7 +28,7 @@ function addQueryParam(key, value) {
     window.location.href = updatedURL;
 }
 
-function fromProductToFiltering(key, value) {
+function fromProductToFiltering(key, value, type) {
     var currentURL = window.location.href;
     var url = new URL(currentURL);
     var searchParams = url.searchParams;
@@ -36,7 +36,17 @@ function fromProductToFiltering(key, value) {
     searchParams.delete("productName");
     searchParams.append(key, value);
 
-    var updatedURL = 'shoes.php?' + url.searchParams.toString();
+    let page;
+    switch (type) {
+        case "buty":
+            page = 'shoes.php?';
+            break;
+        case "ubrania":
+            page = 'clothes.php?'
+            break;
+    }
+
+    var updatedURL = page + url.searchParams.toString();
 
     window.location.href = updatedURL;
 }

@@ -23,7 +23,7 @@ function getProductByProductId(int $productId)
 function getCategoriesByProductId(int $productId)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT c.category FROM categories AS c JOIN products_categories AS pc ON c.categoryId = pc.categoryId WHERE pc.productId = :id");
+    $stmt = $conn->prepare("SELECT c.category, c.type FROM categories AS c JOIN products_categories AS pc ON c.categoryId = pc.categoryId WHERE pc.productId = :id");
     $stmt->bindParam(':id', $productId);
     $stmt->execute();
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
