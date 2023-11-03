@@ -45,9 +45,12 @@
           margin: 0 auto;
           background: white;
           border: 3px solid black;
+          transition-duration: 200ms;
 
           &:hover{
-            background: #e7e7e7;
+            background: $basic_green;
+            cursor: pointer;
+            text-decoration: underline;
           }
         }
       }

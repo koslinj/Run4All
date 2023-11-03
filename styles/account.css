@@ -2,6 +2,7 @@ main.account {
   display: flex;
   gap: 40px;
   position: relative;
+  padding-bottom: 100px;
 }
 main.account h3 {
   font-size: 130%;

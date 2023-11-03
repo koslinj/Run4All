@@ -43,9 +43,12 @@
   margin: 0 auto;
   background: white;
   border: 3px solid black;
+  transition-duration: 200ms;
 }
 .login_register .container .panel .form button:hover {
-  background: #e7e7e7;
+  background: #9AFF91;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .login_register .container .panel p {
   margin: 0;
