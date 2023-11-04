@@ -218,3 +218,21 @@ function getAllSizes($type)
     $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sizes;
 }
+
+function getAllDeliverers()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM deliverers");
+    $stmt->execute();
+    $deliverers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $deliverers;
+}
+
+function getAllPayments()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM payments");
+    $stmt->execute();
+    $deliverers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $deliverers;
+}

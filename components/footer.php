@@ -57,43 +57,27 @@
         <div class="info-section">
             <h3>Kupuj bezpiecznie</h3>
             <ul>
-                <li>
-                    Blik
-                    <img src="../images/footer/blik.svg" alt="Blik Logo">
-                </li>
-                <li>
-                    Przelewy24
-                    <img src="../images/footer/przelewy24.svg" alt="Blik Logo">
-                </li>
-                <li>
-                    Mastercard
-                    <img src="../images/footer/mastercard.svg" alt="Blik Logo">
-                </li>
-                <li>
-                    Visa
-                    <img src="../images/footer/visa.svg" alt="Blik Logo">
-                </li>
+                <?php
+                $payments = getAllPayments();
+                foreach ($payments as $payment): ?>
+                    <li>
+                        <?= $payment["payment"] ?>
+                        <img src="<?= $payment["path"] ?>" alt="<?= $payment["payment"] ?> Logo" width="36px">
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
         <div class="info-section">
             <h3>Dostarczamy</h3>
             <ul>
-                <li>
-                    inPost
-                    <img src="../images/footer/inpost.svg" alt="Blik Logo">
-                </li>
-                <li>
-                    DPD
-                    <img src="../images/footer/dpd.svg" alt="Blik Logo">
-                </li>
-                <li>
-                    FedEx
-                    <img src="../images/footer/fedex.svg" alt="Blik Logo">
-                </li>
-                <li>
-                    UPS
-                    <img src="../images/footer/ups.svg" alt="Blik Logo" height="20px">
-                </li>
+                <?php
+                $deliverers = getAllDeliverers();
+                foreach ($deliverers as $deliverer): ?>
+                    <li>
+                        <?= $deliverer["deliverer"] ?>
+                        <img src="<?= $deliverer["path"] ?>" alt="<?= $deliverer["deliverer"] ?> Logo" width="50px">
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>

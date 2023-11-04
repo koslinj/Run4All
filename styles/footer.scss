@@ -37,8 +37,10 @@
         padding: 0;
 
         li {
-          margin-bottom: 6px;
+          height: 24px;
+          margin-bottom: 4px;
           @include flex-between;
+          gap: 10px;
         }
       }
     }

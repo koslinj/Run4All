@@ -40,10 +40,12 @@
   padding: 0;
 }
 .footer .down .info-section ul li {
-  margin-bottom: 6px;
+  height: 24px;
+  margin-bottom: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 /*# sourceMappingURL=footer.css.map */

@@ -55,8 +55,18 @@ include_once('components/navbar.php');
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="cart-bottom">
+            <a class="clear-cart" href="serverActions/clearCart.php">Wyczyść koszyk</a>
+            <a href="../run4all/order.php">
+                <div class="make-order">
+                    Złóż zamówienie
+                    <img src="images/right_arrow_icon.png" alt="Right Arrow Icon" height="50px">
+                </div>
+            </a>
+        </div>
+    <?php else: ?>
+        <h3>Koszyk jest pusty!</h3>
     <?php endif; ?>
-    <a class="clear-cart" href="serverActions/clearCart.php">Wyczyść koszyk</a>
     <script src="jsActions/cart.js"></script>
 </main>
 

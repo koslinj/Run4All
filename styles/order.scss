@@ -1,0 +1,56 @@
+@import "globals";
+
+.order {
+
+  .check-order{
+    padding: 10px;
+
+    .product-in-order {
+      @include flex-between;
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 6px;
+
+      img {
+        box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px 0.5px;
+      }
+
+      i {
+        color: gray;
+      }
+
+      p {
+        font-size: 120%;
+        margin: 2px;
+      }
+    }
+  }
+
+  .choose-shipment{
+
+    .deliverer{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 36px;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+}
+
+@media (max-width: $mobile) {
+  .cart {
+    .product-in-cart {
+      gap: 20px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}

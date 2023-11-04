@@ -1,3 +1,27 @@
+.cart .cart-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart .cart-bottom .make-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  font-size: 130%;
+  font-weight: 500;
+  font-style: italic;
+  background-color: #9AFF91;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+.cart .cart-bottom .make-order:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
 .cart .product-in-cart {
   padding: 20px 10px;
   display: flex;
