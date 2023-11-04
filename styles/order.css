@@ -20,7 +20,10 @@
   font-size: 120%;
   margin: 2px;
 }
-.order .choose-shipment .deliverer {
+.order .choose-deliverer, .order .choose-payment {
+  padding: 10px;
+}
+.order .choose-deliverer .deliverer, .order .choose-deliverer .payment, .order .choose-payment .deliverer, .order .choose-payment .payment {
   display: flex;
   align-items: center;
   gap: 20px;

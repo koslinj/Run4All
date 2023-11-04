@@ -1,9 +1,11 @@
 function checkDeliverers() {
-    var radios = document.getElementsByName("deliverers");
-    var checked = false;
+    let deliverers = document.getElementsByName("deliverers");
+    let payments = document.getElementsByName("payments");
+    let checked;
 
-    for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
+    checked = false
+    for (let i = 0; i < deliverers.length; i++) {
+        if (deliverers[i].checked) {
             checked = true;
             break;
         }
@@ -11,6 +13,19 @@ function checkDeliverers() {
 
     if (!checked) {
         alert("Wybierz dostawcę!");
+        return false; // Prevent form submission
+    }
+
+    checked = false
+    for (let i = 0; i < payments.length; i++) {
+        if (payments[i].checked) {
+            checked = true;
+            break;
+        }
+    }
+
+    if (!checked) {
+        alert("Wybierz sposób płatności!");
         return false; // Prevent form submission
     }
 

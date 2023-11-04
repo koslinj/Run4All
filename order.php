@@ -53,23 +53,39 @@ include_once('components/navbar.php');
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-    <div class="choose-shipment">
-        <h3>Wybierz dostawcę:</h3>
-        <form action="order.php" onsubmit="return checkDeliverers()">
+    <form action="order.php" onsubmit="return checkDeliverers()">
+        <div class="choose-deliverer">
+            <h3>Wybierz dostawcę:</h3>
             <?php
             $deliverers = getAllDeliverers();
             foreach ($deliverers as $deliverer): ?>
                 <div class="deliverer">
                     <div>
-                        <input type="radio" id="<?= $deliverer["deliverer"] ?>" name="deliverers" value="<?= $deliverer["deliverer"] ?>">
+                        <input type="radio" id="<?= $deliverer["deliverer"] ?>" name="deliverers"
+                               value="<?= $deliverer["deliverer"] ?>">
                         <label for="<?= $deliverer["deliverer"] ?>"><?= $deliverer["deliverer"] ?></label>
                     </div>
                     <img src="<?= $deliverer["path"] ?>" alt="<?= $deliverer["deliverer"] ?> Logo" width="50px">
                 </div>
             <?php endforeach; ?>
-            <button>Zapisz</button>
-        </form>
-    </div>
+        </div>
+        <div class="choose-payment">
+            <h3>Wybierz sposób płatności:</h3>
+            <?php
+            $payments = getAllPayments();
+            foreach ($payments as $payment): ?>
+                <div class="payment">
+                    <div>
+                        <input type="radio" id="<?= $payment["payment"] ?>" name="payments"
+                               value="<?= $payment["payment"] ?>">
+                        <label for="<?= $payment["payment"] ?>"><?= $payment["payment"] ?></label>
+                    </div>
+                    <img src="<?= $payment["path"] ?>" alt="<?= $payment["payment"] ?> Logo" width="50px">
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <button>Zapisz</button>
+    </form>
     <script src="jsActions/order.js"></script>
 </main>
 

@@ -27,9 +27,10 @@
     }
   }
 
-  .choose-shipment{
+  .choose-deliverer, .choose-payment{
+    padding: 10px;
 
-    .deliverer{
+    .deliverer, .payment{
       display: flex;
       align-items: center;
       gap: 20px;
