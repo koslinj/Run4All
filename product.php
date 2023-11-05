@@ -40,7 +40,8 @@ include_once('components/navbar.php');
                     <option value="<?= $size["size"] ?>"><?= $size["size"] ?></option>
                 <?php endforeach; ?>
             </select>
-            <button onclick="addToCart(<?= $product['productId']; ?>)">Do koszyka</button>
+            <button id="add-to-cart-btn" onclick="addToCart(<?= $product['productId']; ?>)">Do koszyka</button>
+            <p id="add-to-cart-info">Dodano do koszyka !</p>
         </div>
         <script src="jsActions/filtering.js"></script>
         <script src="jsActions/cart.js"></script>

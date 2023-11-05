@@ -1,6 +1,9 @@
 async function addToCart(productId) {
     try {
         let sizeSelect = document.getElementById("size");
+        let button = document.getElementById("add-to-cart-btn");
+        let p = document.getElementById("add-to-cart-info");
+
         let chosenSize = sizeSelect.value;
         const response = await fetch("serverActions/addToCart.php", {
             method: "POST",
@@ -13,6 +16,23 @@ async function addToCart(productId) {
         if (!response.ok) {
             throw new Error("Error adding the product to the cart: " + response.status);
         }
+
+        button.style.border = "3px solid red"
+        button.style.color = "red"
+        button.style.scale = "1.2"
+        button.style.rotate = "8deg"
+        setTimeout(() => {
+            button.style.border = "3px solid black"
+            button.style.color = "black"
+            button.style.scale = "1"
+            button.style.rotate = "0deg"
+        }, 450)
+        p.style.opacity = "1"
+        p.style.scale = "1"
+        setTimeout(() => {
+            p.style.opacity = "0"
+            p.style.scale = "0.4"
+        }, 2200)
 
         const data = await response.text();
         console.log(data)

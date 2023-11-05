@@ -49,6 +49,7 @@
       border: 3px solid black;
       border-radius: 10px;
       margin: 10px 0;
+      cursor: pointer;
     }
 
     button{
@@ -63,7 +64,6 @@
       cursor: pointer;
 
       &:hover{
-        scale: 1.15;
         box-shadow: 0 0 10px 1px;
       }
     }
@@ -71,6 +71,15 @@
     p{
       font-size: 140%;
       font-weight: 500;
+    }
+
+    #add-to-cart-info{
+      opacity: 0;
+      scale: 0.4;
+      width: 118px;
+      font-size: 120%;
+      transition-duration: 300ms;
+      text-align: center;
     }
   }
 }
