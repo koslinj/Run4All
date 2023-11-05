@@ -1,0 +1,46 @@
+.order .error-header {
+  font-size: 140%;
+  color: red;
+}
+.order .error-info {
+  font-size: 120%;
+}
+.order .error-info a {
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: 500;
+}
+.order .radio-form {
+  font-size: 120%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.order .radio-form div {
+  padding: 10px;
+}
+.order .radio-form .order-nav-btns {
+  display: flex;
+  gap: 20px;
+}
+.order .radio-form .order-nav-btns button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  font-size: 120%;
+  font-weight: 500;
+  font-style: italic;
+  background-color: #9AFF91;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+.order .radio-form .order-nav-btns button:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
+
+/*# sourceMappingURL=order.css.map */
