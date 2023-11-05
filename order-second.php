@@ -7,6 +7,11 @@ if (isset($_SESSION['cart'])) {
     $cart = $_SESSION["cart"];
 }
 
+if (empty($_SESSION['order'])) {
+    header('Location: order.php');
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["deliverer"]) && isset($_POST["payment"])) {
         $deliverer = $_POST["deliverer"];
