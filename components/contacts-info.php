@@ -7,6 +7,11 @@
             <p class="field-value"><?= $phone["value"] ?></p>
             <img onclick="toggleContactForm(<?= $phone["contactId"] ?>, 'telefon')" src="images/edit_icon.png" alt="Edit Icon"
                  width="30px">
+            <form style="padding: 0px" action="serverActions/deleteContact.php" method="POST">
+                <button class="trash-btn" name="contactId" value="<?= $phone["contactId"] ?>">
+                    <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
+                </button>
+            </form>
         </div>
         <!-- Form initially hidden -->
         <form id="edit-form-telefon<?= $phone["contactId"] ?>" style="display: none" action="account.php" method="POST">
@@ -38,6 +43,11 @@
             <p class="field-value"><?= $email["value"] ?></p>
             <img onclick="toggleContactForm(<?= $email["contactId"] ?>, 'email')" src="images/edit_icon.png" alt="Edit Icon"
                  width="30px">
+            <form style="padding: 0px" action="serverActions/deleteContact.php" method="POST">
+                <button class="trash-btn" name="contactId" value="<?= $email["contactId"] ?>">
+                    <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
+                </button>
+            </form>
         </div>
         <!-- Form initially hidden -->
         <form id="edit-form-email<?= $email["contactId"] ?>" style="display: none" action="account.php" method="POST">

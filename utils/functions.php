@@ -202,6 +202,24 @@ function updateAddress(int $addressId, $town, $street, $number)
     $stmt->execute();
 }
 
+function deleteAddress(int $id)
+{
+    global $conn;
+    $sql = "DELETE FROM addresses WHERE addressId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
+
+function deleteContact(int $id)
+{
+    global $conn;
+    $sql = "DELETE FROM contacts WHERE contactId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
+
 function updateContact(int $contactId, $value)
 {
     global $conn;

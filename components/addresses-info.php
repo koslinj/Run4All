@@ -9,6 +9,11 @@
             </div>
             <img onclick="toggleForm(<?= $address["addressId"] ?>)" src="images/edit_icon.png" alt="Edit Icon"
                  width="30px">
+            <form style="padding: 0px" action="serverActions/deleteAddress.php" method="POST">
+                <button class="trash-btn" name="addressId" value="<?= $address["addressId"] ?>">
+                    <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
+                </button>
+            </form>
         </div>
         <!-- Form initially hidden -->
         <form id="edit-form-<?= $address["addressId"] ?>" style="display: none" action="account.php" method="POST">
