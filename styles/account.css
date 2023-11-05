@@ -35,6 +35,23 @@ main.account .field-value {
   font-size: 130%;
   margin-bottom: 10px;
 }
+main.account .addresses-info .new-address-btn {
+  background-color: #9AFF91;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+main.account .addresses-info .new-address-btn:hover {
+  box-shadow: 0 0 5px 0.5px;
+}
+main.account .addresses-info .new-address-btn img {
+  width: 24px;
+}
 main.account .addresses-info .fields-and-edit {
   display: flex;
   justify-content: space-between;
@@ -67,6 +84,7 @@ main.account .addresses-info form button {
   font-weight: 500;
   font-size: 110%;
   transition-duration: 300ms;
+  cursor: pointer;
 }
 main.account .addresses-info form button:hover {
   scale: 1.1;

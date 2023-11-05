@@ -11,14 +11,23 @@ if (empty($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["town"] && $_POST["street"] && $_POST["number"]) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["town"]) && isset($_POST["street"]) && isset($_POST["number"])) {
     // Retrieve the new values from the form
     $town = $_POST["town"];
     $street = $_POST["street"];
-    $addressId = $_POST["addressId"];
     $number = $_POST["number"];
 
-    updateAddress($addressId, $town, $street, $number);
+    if (isset($_POST["addressId"])){
+        $addressId = $_POST["addressId"];
+        updateAddress($addressId, $town, $street, $number);
+    }
+    else if ($_POST["type"]){
+        $type = $_POST["type"];
+        insertAddress($user_id, $town, $street, $number, $type);
+    }
+
+    header('Location: ' . $_SERVER['REQUEST_URI']);
+    exit();
 }
 
 $user = getUserByUserId($user_id);
@@ -46,9 +55,11 @@ include_once('components/navbar.php');
             <div class="fields-and-edit">
                 <div>
                     <p class="field-type"><?= $address["type"] ?></p>
-                    <p class="field-value"><?= $address["town"] ?>, <?= $address["street"] ?> <?= $address["number"] ?></p>
+                    <p class="field-value"><?= $address["town"] ?>
+                        , <?= $address["street"] ?> <?= $address["number"] ?></p>
                 </div>
-                <img onclick="toggleForm(<?= $address["addressId"] ?>)" src="images/edit_icon.png" alt="Edit Icon" width="30px">
+                <img onclick="toggleForm(<?= $address["addressId"] ?>)" src="images/edit_icon.png" alt="Edit Icon"
+                     width="30px">
             </div>
             <!-- Form initially hidden -->
             <form id="edit-form-<?= $address["addressId"] ?>" style="display: none" action="account.php" method="POST">
@@ -69,6 +80,28 @@ include_once('components/navbar.php');
                 <button type="submit">Zapisz</button>
             </form>
         <?php endforeach; ?>
+        <button class="new-address-btn" onclick="toggleNewAddressForm()">
+            <img id="new-address-btn-icon" src="images/plus_icon.png" alt="Plus Icon">
+        </button>
+        <form id="new-address-form" action="account.php" style="display: none" method="POST">
+            <label>Miasto:<br>
+                <input type="text" name="town">
+            </label>
+
+            <label>Ulica:<br>
+                <input type="text" name="street">
+            </label>
+
+            <label>Numer domu:<br>
+                <input type="number" name="number">
+            </label>
+
+            <label>Typ - (dom, praca):<br>
+                <input type="text" name="type">
+            </label>
+
+            <button type="submit">Zapisz</button>
+        </form>
     </div>
     <a class="logout-link" href="utils/logout.php">
         <img src="images/logout_icon.png" alt="Logout icon" width="40px"/>
