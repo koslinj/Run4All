@@ -1,6 +1,6 @@
 @import "globals";
 
-.order {
+.order-second {
 
   .check-order{
     padding: 10px;
@@ -27,14 +27,17 @@
     }
   }
 
-  .choose-deliverer, .choose-payment{
-    padding: 10px;
+  form{
 
-    .deliverer, .payment{
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      height: 36px;
+    .choose-deliverer, .choose-payment{
+      padding: 10px;
+
+      .deliverer, .payment{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        height: 36px;
+      }
     }
   }
 

@@ -1,0 +1,45 @@
+.order-second .check-order {
+  padding: 10px;
+}
+.order-second .check-order .product-in-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.order-second .check-order .product-in-order img {
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px 0.5px;
+}
+.order-second .check-order .product-in-order i {
+  color: gray;
+}
+.order-second .check-order .product-in-order p {
+  font-size: 120%;
+  margin: 2px;
+}
+.order-second form .choose-deliverer, .order-second form .choose-payment {
+  padding: 10px;
+}
+.order-second form .choose-deliverer .deliverer, .order-second form .choose-deliverer .payment, .order-second form .choose-payment .deliverer, .order-second form .choose-payment .payment {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 36px;
+}
+.order-second a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .cart .product-in-cart {
+    gap: 20px;
+  }
+  .cart .product-in-cart img {
+    width: 100px;
+  }
+}
+
+/*# sourceMappingURL=order-second.css.map */

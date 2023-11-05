@@ -30,8 +30,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["town"]) && isset($_PO
     exit();
 }
 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["value"])) {
+    // Retrieve the new values from the form
+    $value = $_POST["value"];
+
+    if (isset($_POST["contactId"])){
+        $contactId = $_POST["contactId"];
+        updateContact($contactId, $value);
+    }
+    else if (isset($_POST["type"])){
+        $type = $_POST["type"];
+        insertContact($user_id, $value, $type);
+    }
+
+    header('Location: ' . $_SERVER['REQUEST_URI']);
+    exit();
+}
+
 $user = getUserByUserId($user_id);
 $addresses = getAddressesByUserId($user_id);
+$phones = getContactsByUserId($user_id, 'telefon');
+$emails = getContactsByUserId($user_id, 'email');
 ?>
 
 <?php
@@ -48,61 +67,11 @@ include_once('components/navbar.php');
         <p class="field-value"><?php echo $user["name"]; ?></p>
         <p class="field-type">Nazwisko</p>
         <p class="field-value"><?php echo $user["surname"]; ?></p>
+        <p class="field-type">Główny Email</p>
+        <p class="field-value"><?php echo $user["password_email"]; ?></p>
     </div>
-    <div class="addresses-info">
-        <h3>Adresy</h3>
-        <?php foreach ($addresses as $address): ?>
-            <div class="fields-and-edit">
-                <div>
-                    <p class="field-type"><?= $address["type"] ?></p>
-                    <p class="field-value"><?= $address["town"] ?>
-                        , <?= $address["street"] ?> <?= $address["number"] ?></p>
-                </div>
-                <img onclick="toggleForm(<?= $address["addressId"] ?>)" src="images/edit_icon.png" alt="Edit Icon"
-                     width="30px">
-            </div>
-            <!-- Form initially hidden -->
-            <form id="edit-form-<?= $address["addressId"] ?>" style="display: none" action="account.php" method="POST">
-                <input type="hidden" name="addressId" value="<?= $address["addressId"] ?>">
-
-                <label>Miasto:<br>
-                    <input type="text" name="town" value="<?= $address["town"] ?>">
-                </label>
-
-                <label>Ulica:<br>
-                    <input type="text" name="street" value="<?= $address["street"] ?>">
-                </label>
-
-                <label>Numer domu:<br>
-                    <input type="number" name="number" value="<?= $address["number"] ?>">
-                </label>
-
-                <button type="submit">Zapisz</button>
-            </form>
-        <?php endforeach; ?>
-        <button class="new-address-btn" onclick="toggleNewAddressForm()">
-            <img id="new-address-btn-icon" src="images/plus_icon.png" alt="Plus Icon">
-        </button>
-        <form id="new-address-form" action="account.php" style="display: none" method="POST">
-            <label>Miasto:<br>
-                <input type="text" name="town">
-            </label>
-
-            <label>Ulica:<br>
-                <input type="text" name="street">
-            </label>
-
-            <label>Numer domu:<br>
-                <input type="number" name="number">
-            </label>
-
-            <label>Typ - (dom, praca):<br>
-                <input type="text" name="type">
-            </label>
-
-            <button type="submit">Zapisz</button>
-        </form>
-    </div>
+    <?php include_once('components/addresses-info.php'); ?>
+    <?php include_once('components/contacts-info.php') ?>
     <a class="logout-link" href="utils/logout.php">
         <img src="images/logout_icon.png" alt="Logout icon" width="40px"/>
         Wyloguj się

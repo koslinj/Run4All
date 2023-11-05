@@ -1,5 +1,6 @@
 main.account {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
   position: relative;
   padding-bottom: 100px;
@@ -45,6 +46,7 @@ main.account .addresses-info .new-address-btn {
   align-items: center;
   transition-duration: 200ms;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 main.account .addresses-info .new-address-btn:hover {
   box-shadow: 0 0 5px 0.5px;

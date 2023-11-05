@@ -72,6 +72,18 @@ function getAddressesByUserId(int $userId)
     return $addresses;
 }
 
+function getContactsByUserId(int $userId, $type)
+{
+    global $conn;
+    $sql = "SELECT * FROM contacts WHERE userId = :id AND type = :type";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $contacts;
+}
+
 function createQuery($type): array
 {
     $whereClause = "";
@@ -187,6 +199,40 @@ function updateAddress(int $addressId, $town, $street, $number)
     $stmt->bindParam(':town', $town);
     $stmt->bindParam(':street', $street);
     $stmt->bindParam(':number', $number);
+    $stmt->execute();
+}
+
+function updateContact(int $contactId, $value)
+{
+    global $conn;
+    $sql = "UPDATE contacts SET value = :value WHERE contactId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $contactId);
+    $stmt->bindParam(':value', $value);
+    $stmt->execute();
+}
+
+function insertAddress(int $userId, $town, $street, $number, $type)
+{
+    global $conn;
+    $sql = "INSERT INTO addresses(userId, town, street, number, type) VALUES(:id, :town, :street, :number, :type)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->bindParam(':town', $town);
+    $stmt->bindParam(':street', $street);
+    $stmt->bindParam(':number', $number);
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+}
+
+function insertContact(int $userId, $value, $type)
+{
+    global $conn;
+    $sql = "INSERT INTO contacts(userId, value, type) VALUES(:id, :value, :type)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $userId);
+    $stmt->bindParam(':value', $value);
+    $stmt->bindParam(':type', $type);
     $stmt->execute();
 }
 
