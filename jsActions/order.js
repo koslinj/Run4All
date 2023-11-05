@@ -1,6 +1,6 @@
-function checkDeliverers() {
-    let deliverers = document.getElementsByName("deliverers");
-    let payments = document.getElementsByName("payments");
+function checkDelivererAndPayment() {
+    let deliverers = document.getElementsByName("deliverer");
+    let payments = document.getElementsByName("payment");
     let checked;
 
     checked = false

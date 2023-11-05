@@ -20,6 +20,29 @@
   font-size: 120%;
   margin: 2px;
 }
+.order-second form .order-nav-btns {
+  display: flex;
+  gap: 20px;
+}
+.order-second form .order-nav-btns button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  font-size: 120%;
+  font-weight: 500;
+  font-style: italic;
+  background-color: #9AFF91;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+.order-second form .order-nav-btns button:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
 .order-second form .choose-deliverer, .order-second form .choose-payment {
   padding: 10px;
 }

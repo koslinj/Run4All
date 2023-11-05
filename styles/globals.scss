@@ -27,3 +27,22 @@ $tablet: 1200px;
   justify-content: space-around;
   align-items: center;
 }
+
+@mixin go-next-btn{
+  @include flex-center;
+  gap: 10px;
+  padding: 6px;
+  font-size: 120%;
+  font-weight: 500;
+  font-style: italic;
+  background-color: $basic_green;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 200ms;
+
+  &:hover{
+    text-decoration: underline;
+    scale: 1.1;
+  }
+}

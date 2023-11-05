@@ -29,6 +29,15 @@
 
   form{
 
+    .order-nav-btns{
+      display: flex;
+      gap: 20px;
+
+      button{
+        @include go-next-btn;
+      }
+    }
+
     .choose-deliverer, .choose-payment{
       padding: 10px;
 

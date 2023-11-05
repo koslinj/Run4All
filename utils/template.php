@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../styles/product.css">
     <link rel="stylesheet" href="../styles/account.css">
     <link rel="stylesheet" href="../styles/cart.css">
+    <link rel="stylesheet" href="../styles/order.css">
     <link rel="stylesheet" href="../styles/order-second.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

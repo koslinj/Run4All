@@ -7,6 +7,19 @@ if (isset($_SESSION['cart'])) {
     $cart = $_SESSION["cart"];
 }
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["deliverer"]) && isset($_POST["payment"])) {
+        $deliverer = $_POST["deliverer"];
+        $payment = $_POST["payment"];
+
+        $_SESSION['order']['deliverer'] = $deliverer;
+        $_SESSION['order']['payment'] = $payment;
+
+        header('Location: order-third.php');
+        exit();
+    }
+}
+
 ?>
 
 <?php
@@ -53,7 +66,7 @@ include_once('components/navbar.php');
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-    <form action="order-second.php" method="POST" onsubmit="return checkDeliverers()">
+    <form action="order-second.php" method="POST" onsubmit="return checkDelivererAndPayment()">
         <div class="choose-deliverer">
             <h3>Wybierz dostawcę:</h3>
             <?php
@@ -61,7 +74,7 @@ include_once('components/navbar.php');
             foreach ($deliverers as $deliverer): ?>
                 <div class="deliverer">
                     <div>
-                        <input type="radio" id="<?= $deliverer["deliverer"] ?>" name="deliverers"
+                        <input type="radio" id="<?= $deliverer["deliverer"] ?>" name="deliverer"
                                value="<?= $deliverer["deliverer"] ?>">
                         <label for="<?= $deliverer["deliverer"] ?>"><?= $deliverer["deliverer"] ?></label>
                     </div>
@@ -76,7 +89,7 @@ include_once('components/navbar.php');
             foreach ($payments as $payment): ?>
                 <div class="payment">
                     <div>
-                        <input type="radio" id="<?= $payment["payment"] ?>" name="payments"
+                        <input type="radio" id="<?= $payment["payment"] ?>" name="payment"
                                value="<?= $payment["payment"] ?>">
                         <label for="<?= $payment["payment"] ?>"><?= $payment["payment"] ?></label>
                     </div>
@@ -84,7 +97,16 @@ include_once('components/navbar.php');
                 </div>
             <?php endforeach; ?>
         </div>
-        <button>Przejdź dalej</button>
+        <div class="order-nav-btns">
+            <button type="button" onclick="window.history.back()">
+                <img src="images/back_icon.png" alt="Back Icon" height="50px">
+                Wróć
+            </button>
+            <button>
+                Przejdź dalej
+                <img src="images/right_arrow_icon.png" alt="Right Arrow Icon" height="50px">
+            </button>
+        </div>
     </form>
     <script src="jsActions/order.js"></script>
 </main>

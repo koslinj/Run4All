@@ -1,0 +1,39 @@
+@import "globals";
+
+.order{
+
+  .error-header{
+    font-size: 140%;
+    color: red;
+  }
+
+  .error-info{
+    font-size: 120%;
+
+    a{
+      text-decoration: underline;
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+
+  .radio-form{
+    font-size: 120%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    div{
+      padding: 10px;
+    }
+
+    .order-nav-btns{
+      display: flex;
+      gap: 20px;
+
+      button{
+        @include go-next-btn;
+      }
+    }
+  }
+}
