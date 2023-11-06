@@ -72,6 +72,17 @@ function getAddressesByUserId(int $userId)
     return $addresses;
 }
 
+function getAddressByAddressId(int $addressId)
+{
+    global $conn;
+    $sql = "SELECT * FROM addresses WHERE addressId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $addressId);
+    $stmt->execute();
+    $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $addresses[0];
+}
+
 function getContactsByUserId(int $userId, $type)
 {
     global $conn;

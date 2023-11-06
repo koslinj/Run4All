@@ -14,10 +14,13 @@ if (isset($_SESSION['user_id'])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["address"]) && isset($_POST["phone"]) && isset($_POST["email"])) {
         $addressId = $_POST["address"];
+        $address = getAddressByAddressId($addressId);
         $phone = $_POST["phone"];
         $email = $_POST["email"];
 
-        $_SESSION['order']['addressId'] = intval($addressId);
+        $_SESSION['order']['town'] = $address["town"];
+        $_SESSION['order']['street'] = $address["street"];
+        $_SESSION['order']['number'] = $address["number"];
         $_SESSION['order']['phone'] = $phone;
         $_SESSION['order']['email'] = $email;
 
