@@ -6,6 +6,10 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $user = getUserByUserId($user_id);
+
+    $_SESSION['order']['name'] = $user["name"];
+    $_SESSION['order']['surname'] = $user["surname"];
+
     $addresses = getAddressesByUserId($user_id);
     $phones = getContactsByUserId($user_id, "telefon");
     $emails = getContactsByUserId($user_id, "email");

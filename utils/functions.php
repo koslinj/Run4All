@@ -265,6 +265,45 @@ function insertContact(int $userId, $value, $type)
     $stmt->execute();
 }
 
+function insertOrder($order, $sum)
+{
+    global $conn;
+    $sql = "INSERT INTO orders
+    (name, surname, email, phone, town, street, number, value, status, payment, deliverer)
+    VALUES(:name, :surname, :email, :phone, :town, :street, :number, :value, 'przetwarzane', :payment, :deliverer)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':name', $order["name"]);
+    $stmt->bindParam(':surname', $order["surname"]);
+    $stmt->bindParam(':email', $order["email"]);
+    $stmt->bindParam(':phone', $order["phone"]);
+    $stmt->bindParam(':town', $order["town"]);
+    $stmt->bindParam(':street', $order["street"]);
+    $stmt->bindParam(':number', $order["number"]);
+    $stmt->bindParam(':value', $sum);
+    $stmt->bindParam(':payment', $order["payment"]);
+    $stmt->bindParam(':deliverer', $order["deliverer"]);
+    $stmt->execute();
+
+    return $conn->lastInsertId();
+}
+
+function insertOrderDetails($cart, $orderId)
+{
+    global $conn;
+    $sql = "INSERT INTO details(orderId, productName, quantity, price, size)
+    VALUES(:orderId, :productName, :quantity, :price, :size)";
+
+    foreach ($cart as $product){
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':orderId', $orderId);
+        $stmt->bindParam(':productName', $product["productName"]);
+        $stmt->bindParam(':quantity', $product["quantity"]);
+        $stmt->bindParam(':price', $product["price"]);
+        $stmt->bindParam(':size', $product["size"]);
+        $stmt->execute();
+    }
+}
+
 function getAllCategories($type)
 {
     global $conn;
