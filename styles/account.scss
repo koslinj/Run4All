@@ -13,14 +13,13 @@ main.account {
     .my-orders-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
 
       .order-container {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 30px;
-        width: 460px;
+        width: 430px;
 
         button {
           @include go-next-btn;

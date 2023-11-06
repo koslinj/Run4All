@@ -76,7 +76,7 @@ include_once('components/navbar.php');
         <div class="my-orders-container">
             <?php foreach ($orders as $order): ?>
                 <div class="order-container">
-                    <div class="order-general">
+                    <div class="order-general green-bg">
                         <div>
                             <p class="field-type">Data:</p>
                             <p class="field-value"><?= date("Y-m-d", strtotime($order["date"])); ?></p>

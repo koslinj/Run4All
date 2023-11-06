@@ -98,7 +98,7 @@ function getContactsByUserId(int $userId, $type)
 function getOrdersByNameAndSurname($name, $surname)
 {
     global $conn;
-    $sql = "SELECT * FROM orders WHERE name = :name AND surname = :surname";
+    $sql = "SELECT * FROM orders WHERE name = :name AND surname = :surname ORDER BY date desc";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':surname', $surname);

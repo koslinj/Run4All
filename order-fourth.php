@@ -1,5 +1,6 @@
 <?php
-$currentPage = 'RUN 4 ALL | Podsumowanie Zamówienia';
+include_once('utils/functions.php');
+$currentPage = 'RUN 4 ALL | Dziękujemy';
 include_once('utils/template.php');
 include_once('components/navbar.php');
 ?>
