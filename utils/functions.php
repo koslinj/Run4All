@@ -95,6 +95,29 @@ function getContactsByUserId(int $userId, $type)
     return $contacts;
 }
 
+function getOrdersByNameAndSurname($name, $surname)
+{
+    global $conn;
+    $sql = "SELECT * FROM orders WHERE name = :name AND surname = :surname";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':surname', $surname);
+    $stmt->execute();
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $orders;
+}
+
+function getDetailsByOrderId($id)
+{
+    global $conn;
+    $sql = "SELECT * FROM details WHERE orderId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $details;
+}
+
 function createQuery($type): array
 {
     $whereClause = "";

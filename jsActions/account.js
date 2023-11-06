@@ -25,3 +25,11 @@ function toggleNewContactForm(type){
     newContactIcon.src = newContactForm.style.display === "none" ? "images/back_icon.png" : "images/plus_icon.png"
     newContactForm.style.display = newContactForm.style.display === "none" ? "flex" : "none";
 }
+
+function toggleDetails(id) {
+    const details = document.getElementById("hidden-order-" + id);
+    const btn = document.getElementById("hide-order-btn-" + id);
+
+    btn.innerText = details.style.display === "none" ? "Ukryj szczegóły" : "Zobacz szczegóły";
+    details.style.display = details.style.display === "none" ? "block" : "none";
+}
