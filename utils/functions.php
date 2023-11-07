@@ -143,6 +143,13 @@ function createQuery($type): array
         $params[':size'] = $size;
     }
 
+    // Check for color parameter
+    if (isset($_GET['color'])) {
+        $color = $_GET['color'];
+        $whereClause .= "colors.color = :color AND ";
+        $params[':color'] = $color;
+    }
+
     $whereClause .= "c.type = :type AND ";
     $params[':type'] = $type;
 
@@ -152,6 +159,8 @@ function createQuery($type): array
 
     $sql .= " JOIN products_categories as pc ON p.productId = pc.productId 
 JOIN categories as c ON pc.categoryId = c.categoryId
+JOIN products_colors as pcolors ON p.productId = pcolors.productId
+JOIN colors ON pcolors.colorId = colors.colorId
 JOIN producers as pr ON pr.producerId = p.producerId
 JOIN sizes as s ON s.productId = p.productId";
 
@@ -344,6 +353,15 @@ function getAllCategories($type)
     $stmt->execute();
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $categories;
+}
+
+function getAllColors()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM colors");
+    $stmt->execute();
+    $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $colors;
 }
 
 function getAllProducers()

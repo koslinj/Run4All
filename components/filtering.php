@@ -54,5 +54,24 @@
             </a>
         </div>
     </div>
+    <div class="filter-type">
+        <div class="filter-title" onclick="toggleContent(this)">
+            Kolory
+            <div class="toggle">
+                <img src="../images/down_arrow_icon.png" alt="Arrow Icon" width="30px">
+            </div>
+        </div>
+        <div class="content size-filter">
+            <?php $colors = getAllColors(); ?>
+            <?php foreach ($colors as $color): ?>
+                <a href="#" onclick="addQueryParam('color', '<?= $color["color"] ?>'); return false;">
+                    <?= $color["color"] ?>
+                </a>
+            <?php endforeach; ?>
+            <a class="clear-filtering" href="#" onclick="addQueryParam('color', 'clear'); return false;">
+                Wyczyść
+            </a>
+        </div>
+    </div>
     <script src="../jsActions/filtering.js"></script>
 </section>
