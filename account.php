@@ -49,7 +49,7 @@ $user = getUserByUserId($user_id);
 $addresses = getAddressesByUserId($user_id);
 $phones = getContactsByUserId($user_id, 'telefon');
 $emails = getContactsByUserId($user_id, 'email');
-$orders = getOrdersByNameAndSurname($user["name"], $user["surname"]);
+$orders = getOrdersByPasswordEmail($user["password_email"]);
 ?>
 
 <?php

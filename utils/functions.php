@@ -46,8 +46,8 @@ function getProducerByProducerId(int $producerId)
     $stmt = $conn->prepare("SELECT * FROM producers WHERE producerId = :id");
     $stmt->bindParam(':id', $producerId);
     $stmt->execute();
-    $prooducers = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $prooducers[0];
+    $producers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $producers[0];
 }
 
 function getUserByUserId(int $userId)
@@ -95,13 +95,12 @@ function getContactsByUserId(int $userId, $type)
     return $contacts;
 }
 
-function getOrdersByNameAndSurname($name, $surname)
+function getOrdersByPasswordEmail($email)
 {
     global $conn;
-    $sql = "SELECT * FROM orders WHERE name = :name AND surname = :surname ORDER BY date desc";
+    $sql = "SELECT * FROM orders WHERE password_email = :email ORDER BY date desc";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':surname', $surname);
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $orders;
@@ -193,7 +192,15 @@ function getCartByUserId(int $userId)
     $stmt->bindParam(':id', $userId);
     $stmt->execute();
     $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $cart;
+
+    // Create a new cart array with custom keys
+    $newCart = [];
+    foreach ($cart as $item) {
+        $newKey = $item['productId'] . $item['size'];
+        $newCart[$newKey] = $item;
+    }
+
+    return $newCart;
 }
 
 function clearCartInDb(int $userId)
@@ -292,12 +299,14 @@ function insertOrder($order, $sum)
 {
     global $conn;
     $sql = "INSERT INTO orders
-    (name, surname, email, phone, town, street, number, value, status, payment, deliverer)
-    VALUES(:name, :surname, :email, :phone, :town, :street, :number, :value, 'przetwarzane', :payment, :deliverer)";
+    (name, surname, email, password_email, phone, town, street, number, value, status, payment, deliverer)
+    VALUES(:name, :surname, :email, :password_email, :phone, :town, :street, :number, 
+           :value, 'przetwarzane', :payment, :deliverer)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $order["name"]);
     $stmt->bindParam(':surname', $order["surname"]);
     $stmt->bindParam(':email', $order["email"]);
+    $stmt->bindParam(':password_email', $order["password_email"]);
     $stmt->bindParam(':phone', $order["phone"]);
     $stmt->bindParam(':town', $order["town"]);
     $stmt->bindParam(':street', $order["street"]);

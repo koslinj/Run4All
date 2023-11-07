@@ -9,6 +9,7 @@ if (isset($_SESSION['user_id'])) {
 
     $_SESSION['order']['name'] = $user["name"];
     $_SESSION['order']['surname'] = $user["surname"];
+    $_SESSION['order']['password_email'] = $user["password_email"];
 
     $addresses = getAddressesByUserId($user_id);
     $phones = getContactsByUserId($user_id, "telefon");
