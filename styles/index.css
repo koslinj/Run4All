@@ -1,3 +1,59 @@
+.index .product-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.index .product-slider a {
+  color: rgba(0, 0, 0, 0.7);
+  text-decoration: underline;
+  font-size: 140%;
+}
+.index .product-slider .prev-button, .index .product-slider .next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-100%);
+  background-color: #9AFF91;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.index .product-slider .prev-button:hover, .index .product-slider .next-button:hover {
+  box-shadow: 0 0 4px 1px;
+}
+.index .product-slider .prev-button img, .index .product-slider .next-button img {
+  width: 50px;
+}
+.index .product-slider .prev-button {
+  left: 4px;
+}
+.index .product-slider .next-button {
+  right: 4px;
+}
+.index .product-slider img {
+  width: 380px;
+}
+.index .product-slider .slider-container {
+  flex: 1;
+  overflow: hidden;
+}
+.index .product-slider .slider {
+  display: flex;
+  transition: transform 0.5s;
+}
+.index .product-slider .slider .product-slide {
+  flex: 0 0 100%; /* Display two products side by side */
+  display: flex;
+  justify-content: center; /* Space between the products */
+  align-items: center;
+  flex-wrap: wrap;
+}
+.index .product-slider .slider .product-slide .product {
+  padding: 0;
+}
 .index h1 {
   font-size: 200%;
   text-align: center;
@@ -6,6 +62,29 @@
 .index p {
   font-size: 150%;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .index .product-slider img {
+    width: 280px;
+  }
+}
+@media (max-width: 900px) {
+  .index .product-slider img {
+    width: 180px;
+  }
+}
+@media (max-width: 560px) {
+  .index .product-slider .prev-button, .index .product-slider .next-button {
+    width: 40px;
+    height: 40px;
+  }
+  .index .product-slider .prev-button img, .index .product-slider .next-button img {
+    width: 30px;
+  }
+  .index .product-slider img {
+    width: 120px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

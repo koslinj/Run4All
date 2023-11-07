@@ -1,10 +1,10 @@
 .products-page {
   display: flex;
-  flex-wrap: wrap;
 }
 .products-page .left {
-  width: 220px;
+  width: 210px;
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   padding: 10px;
 }
@@ -13,6 +13,7 @@
 }
 .products-page .right .list {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 .products-page .right .product-on-list {
@@ -47,6 +48,12 @@
 .products-page .right .product-on-list p {
   font-size: 120%;
   padding: 10px;
+}
+
+@media (max-width: 900px) {
+  .products-page {
+    flex-wrap: wrap;
+  }
 }
 
 /*# sourceMappingURL=products-page.css.map */

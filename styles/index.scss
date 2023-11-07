@@ -1,4 +1,73 @@
+@import "globals";
+
 .index {
+  .product-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    a{
+      color: rgba(0, 0, 0, 0.7);
+      text-decoration: underline;
+      font-size: 140%;
+    }
+
+    .prev-button, .next-button{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-100%);
+      background-color: $basic_green;
+      border-radius: 50%;
+      @include flex-center;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+
+      &:hover{
+        box-shadow: 0 0 4px 1px;
+      }
+
+      img{
+        width: 50px;
+      }
+    }
+
+    .prev-button{
+      left: 4px;
+    }
+
+    .next-button{
+      right: 4px;
+    }
+
+    img {
+      width: 380px;
+    }
+
+    .slider-container {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s;
+
+      .product-slide {
+        flex: 0 0 100%; /* Display two products side by side */
+        display: flex;
+        justify-content: center; /* Space between the products */
+        align-items: center;
+        flex-wrap: wrap;
+
+        .product {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+
   h1 {
     font-size: 200%;
     text-align: center;
@@ -8,5 +77,44 @@
   p {
     font-size: 150%;
     text-align: center;
+  }
+}
+
+
+@media (max-width: $tablet) {
+  .index {
+    .product-slider {
+      img {
+        width: 280px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .index {
+    .product-slider {
+      img {
+        width: 180px;
+      }
+    }
+  }
+}
+
+@media (max-width: $small) {
+  .index {
+    .product-slider {
+      .prev-button, .next-button{
+        width: 40px;
+        height: 40px;
+
+        img{
+          width: 30px;
+        }
+      }
+      img {
+        width: 120px;
+      }
+    }
   }
 }
