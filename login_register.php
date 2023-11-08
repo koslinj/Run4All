@@ -10,6 +10,10 @@ if (!empty($_SESSION['user_id'])) {
     exit();
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['error'])) {
+    $error = $_GET["error"];
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['register'])) {
         // User clicked the registration button
@@ -66,7 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
                 // Invalid login
-                echo "Invalid email or password.";
+                $error = "Nieprawidłowy email lub hasło!";
+                header("Location: login_register.php?error=" . urlencode($error));
+                exit();
             }
         } catch (PDOException $e) {
             // Login failed
@@ -99,6 +105,9 @@ include_once('components/navbar.php');
                     <img src="images/login_icon.png" alt="Login Icon" width="30px">
                     Zaloguj się
                 </button>
+                <?php if(isset($error)): ?>
+                    <h4 style="color: red; text-align: center"><?= $error ?></h4>
+                <?php endif; ?>
             </form>
         </div>
         <div class="panel">
@@ -123,6 +132,14 @@ include_once('components/navbar.php');
             </form>
         </div>
     </div>
+    <script>
+        // Check if the error parameter is present in the URL
+        if (window.location.search.includes("error=")) {
+            // Use the history.replaceState method to remove the error parameter
+            const newUrl = window.location.href.replace(/\?error=[^&]*/, '');
+            history.replaceState({}, document.title, newUrl);
+        }
+    </script>
 </main>
 
 <?php
