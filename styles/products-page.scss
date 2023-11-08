@@ -68,3 +68,22 @@
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: $small) {
+  .products-page{
+    justify-content: center;
+
+    .right{
+      padding-left: 0;
+
+      .list{
+        justify-content: space-between;
+        gap: 0;
+
+        .product-on-list{
+          width: 49%;
+        }
+      }
+    }
+  }
+}
