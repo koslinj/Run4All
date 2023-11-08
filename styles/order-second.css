@@ -52,6 +52,14 @@
   gap: 20px;
   height: 36px;
 }
+.order-second form .choose-deliverer .deliverer label, .order-second form .choose-deliverer .payment label, .order-second form .choose-payment .deliverer label, .order-second form .choose-payment .payment label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 130%;
+  font-weight: 500;
+}
 .order-second a:hover {
   text-decoration: underline;
 }

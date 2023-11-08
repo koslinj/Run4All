@@ -50,6 +50,16 @@ function getProducerByProducerId(int $producerId)
     return $producers[0];
 }
 
+function getDelivererById(int $id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM deliverers WHERE delivererId = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $deliverers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $deliverers[0];
+}
+
 function getUserByUserId(int $userId)
 {
     global $conn;

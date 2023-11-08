@@ -13,11 +13,15 @@ if (empty($_SESSION['order'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST["deliverer"]) && isset($_POST["payment"])) {
-        $deliverer = $_POST["deliverer"];
+    if (isset($_POST["delivererId"]) && isset($_POST["payment"])) {
+        $delivererId = $_POST["delivererId"];
+        $delivererDB = getDelivererById($delivererId);
+        $deliverer = $delivererDB["deliverer"];
+        $deliverer_price = $delivererDB["price"];
         $payment = $_POST["payment"];
 
         $_SESSION['order']['deliverer'] = $deliverer;
+        $_SESSION['order']['deliverer_price'] = $deliverer_price;
         $_SESSION['order']['payment'] = $payment;
 
         header('Location: order-third.php');
@@ -78,12 +82,13 @@ include_once('components/navbar.php');
             $deliverers = getAllDeliverers();
             foreach ($deliverers as $deliverer): ?>
                 <div class="deliverer">
-                    <div>
-                        <input type="radio" id="<?= $deliverer["deliverer"] ?>" name="deliverer"
-                               value="<?= $deliverer["deliverer"] ?>">
-                        <label for="<?= $deliverer["deliverer"] ?>"><?= $deliverer["deliverer"] ?></label>
-                    </div>
-                    <img src="<?= $deliverer["path"] ?>" alt="<?= $deliverer["deliverer"] ?> Logo" width="50px">
+                    <input type="radio" id="<?= $deliverer["deliverer"] ?>" name="delivererId"
+                           value=<?= $deliverer["delivererId"] ?>>
+                    <label for="<?= $deliverer["deliverer"] ?>">
+                        <?= $deliverer["deliverer"] ?>
+                        <img src="<?= $deliverer["path"] ?>" alt="<?= $deliverer["deliverer"] ?> Logo" width="60px">
+                        <?= $deliverer["price"] ?> zł
+                    </label>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -93,12 +98,12 @@ include_once('components/navbar.php');
             $payments = getAllPayments();
             foreach ($payments as $payment): ?>
                 <div class="payment">
-                    <div>
-                        <input type="radio" id="<?= $payment["payment"] ?>" name="payment"
-                               value="<?= $payment["payment"] ?>">
-                        <label for="<?= $payment["payment"] ?>"><?= $payment["payment"] ?></label>
-                    </div>
-                    <img src="<?= $payment["path"] ?>" alt="<?= $payment["payment"] ?> Logo" width="50px">
+                    <input type="radio" id="<?= $payment["payment"] ?>" name="payment"
+                           value="<?= $payment["payment"] ?>">
+                    <label for="<?= $payment["payment"] ?>">
+                        <?= $payment["payment"] ?>
+                        <img src="<?= $payment["path"] ?>" alt="<?= $payment["payment"] ?> Logo" width="50px">
+                    </label>
                 </div>
             <?php endforeach; ?>
         </div>

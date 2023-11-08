@@ -55,35 +55,41 @@ include_once('components/navbar.php');
             <form class="radio-form" action="order.php" method="POST">
                 <div>
                     <h3>Wybierz adres:</h3>
-                    <?php foreach ($addresses as $address): ?>
-                        <label>
-                            <input required type="radio" name="address" value=<?= $address["addressId"] ?>>
-                            <strong><?= $address["type"] . ": " ?></strong>
-                            <?= $address["town"] ?>, <?= $address["street"] ?> <?= $address["number"] ?>
-                        </label>
-                    <?php endforeach; ?>
+                    <div class="options-container">
+                        <?php foreach ($addresses as $address): ?>
+                            <label>
+                                <input required type="radio" name="address" value=<?= $address["addressId"] ?>>
+                                <strong><?= $address["type"] . ": " ?></strong>
+                                <?= $address["town"] ?>, <?= $address["street"] ?> <?= $address["number"] ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <div>
                     <h3>Wybierz telefon:</h3>
-                    <?php foreach ($phones as $phone): ?>
-                        <label>
-                            <input required type="radio" name="phone" value="<?= $phone["value"] ?>">
-                            <?= $phone["value"] ?>
-                        </label>
-                    <?php endforeach; ?>
+                    <div class="options-container">
+                        <?php foreach ($phones as $phone): ?>
+                            <label>
+                                <input required type="radio" name="phone" value="<?= $phone["value"] ?>">
+                                <?= $phone["value"] ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <div>
                     <h3>Wybierz email:</h3>
-                    <label>
-                        <input required type="radio" name="email" value="<?= $user["password_email"] ?>">
-                        <?= $user["password_email"] ?>
-                    </label>
-                    <?php foreach ($emails as $email): ?>
+                    <div class="options-container">
                         <label>
-                            <input required type="radio" name="email" value="<?= $email["value"] ?>">
-                            <?= $email["value"] ?>
+                            <input required type="radio" name="email" value="<?= $user["password_email"] ?>">
+                            <?= $user["password_email"] ?>
                         </label>
-                    <?php endforeach; ?>
+                        <?php foreach ($emails as $email): ?>
+                            <label>
+                                <input required type="radio" name="email" value="<?= $email["value"] ?>">
+                                <?= $email["value"] ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <div class="order-nav-btns">
                     <button type="button" onclick="window.history.back()">

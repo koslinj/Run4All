@@ -1,0 +1,41 @@
+@import "globals";
+
+main.order-third {
+
+  button{
+    @include go-next-btn;
+    padding: 20px;
+  }
+
+  .order-summary {
+    display: flex;
+    gap: 20px;
+
+    p{
+      margin: 10px 0;
+      font-size: 140%;
+    }
+
+    .cash{
+      margin-top: 30px;
+    }
+
+    .final-sum{
+      margin-top: 30px;
+      font-size: 160%;
+    }
+
+    .summary-keys-container{
+      text-align: right;
+      font-style: italic;
+    }
+
+    .summary-values-container{
+      font-weight: 500;
+
+      .final-sum{
+        color: red;
+      }
+    }
+  }
+}

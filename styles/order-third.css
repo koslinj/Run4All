@@ -1,0 +1,47 @@
+main.order-third button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  font-size: 120%;
+  font-weight: 500;
+  font-style: italic;
+  background-color: #9AFF91;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 200ms;
+  padding: 20px;
+}
+main.order-third button:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
+main.order-third .order-summary {
+  display: flex;
+  gap: 20px;
+}
+main.order-third .order-summary p {
+  margin: 10px 0;
+  font-size: 140%;
+}
+main.order-third .order-summary .cash {
+  margin-top: 30px;
+}
+main.order-third .order-summary .final-sum {
+  margin-top: 30px;
+  font-size: 160%;
+}
+main.order-third .order-summary .summary-keys-container {
+  text-align: right;
+  font-style: italic;
+}
+main.order-third .order-summary .summary-values-container {
+  font-weight: 500;
+}
+main.order-third .order-summary .summary-values-container .final-sum {
+  color: red;
+}
+
+/*# sourceMappingURL=order-third.css.map */

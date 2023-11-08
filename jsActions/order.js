@@ -1,5 +1,5 @@
 function checkDelivererAndPayment() {
-    let deliverers = document.getElementsByName("deliverer");
+    let deliverers = document.getElementsByName("delivererId");
     let payments = document.getElementsByName("payment");
     let checked;
 

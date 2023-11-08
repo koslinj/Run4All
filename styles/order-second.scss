@@ -46,6 +46,14 @@
         align-items: center;
         gap: 20px;
         height: 36px;
+
+        label{
+          @include flex-center;
+          gap: 20px;
+
+          font-size: 130%;
+          font-weight: 500;
+        }
       }
     }
   }
