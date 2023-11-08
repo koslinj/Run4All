@@ -19,6 +19,12 @@ main.account .my-orders .my-orders-container .order-container {
   margin-bottom: 30px;
   width: 430px;
 }
+main.account .my-orders .my-orders-container .order-container .hidden-order {
+  border: 3px solid black;
+  margin-top: 10px;
+  padding: 4px;
+  border-radius: 10px;
+}
 main.account .my-orders .my-orders-container .order-container button {
   display: flex;
   justify-content: center;
@@ -42,7 +48,7 @@ main.account .my-orders .my-orders-container .order-container .order-general {
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
-  margin: 20px 0;
+  margin: 0 0 20px 0;
 }
 main.account .logout-link {
   background-color: rgba(255, 0, 0, 0.5);

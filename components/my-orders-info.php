@@ -21,7 +21,7 @@
                 <button id="hide-order-btn-<?= $order['orderId'] ?>"
                         onclick="toggleDetails(<?= $order['orderId'] ?>)">Zobacz szczegóły
                 </button>
-                <div style="display: none;" id="hidden-order-<?= $order['orderId'] ?>">
+                <div style="display: none;" class="hidden-order" id="hidden-order-<?= $order['orderId'] ?>">
                     <h4>Dane Kontaktowe</h4>
                     <div class="order-general">
                         <div>
