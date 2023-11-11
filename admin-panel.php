@@ -51,38 +51,51 @@ include_once('utils/template.php');
 <main class="admin-panel">
     <h1>Panel Administratora</h1>
     <h2>Produkty</h2>
-    <div class="product-admin-list">
-        <?php foreach ($products as $product): ?>
-            <div id="product_<?= $product['productId'] ?>" class="product-admin">
-                <img style="box-shadow: 0 0 5px 0.1px" src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
-                <p><?= $product['productName'] ?></p>
-                <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
-                    <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
-                </button>
-            </div>
-        <?php endforeach; ?>
-    </div>
-    <form action="admin-panel.php" method="post" enctype="multipart/form-data">
-        <label for="image">Choose Image:</label>
-        <input type="file" name="image" id="image" required>
-
-        <label for="productName">Product Name:</label>
-        <input type="text" name="productName" id="productName" required>
-
-        <label for="price">Price:</label>
-        <input type="number" name="price" id="price" step="0.01" required>
-
-        <label for="producer">Select Producer:</label>
-        <select name="producer" id="producer">
-            <?php foreach ($producers as $producer): ?>
-                <option value=<?= $producer['producerId'] ?>>
-                    <?= $producer['producer'] ?>
-                </option>
+    <section class="admin-section-products">
+        <div class="product-admin-list">
+            <?php foreach ($products as $product): ?>
+                <div id="product_<?= $product['productId'] ?>" class="product-admin">
+                    <img style="box-shadow: 0 0 5px 0.1px" src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
+                    <p><?= $product['productName'] ?></p>
+                    <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
+                        <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
+                    </button>
+                </div>
             <?php endforeach; ?>
-        </select>
+        </div>
+        <form action="admin-panel.php" method="post" enctype="multipart/form-data">
+            <h3>Dodaj Produkt</h3>
+            <label>
+                Wybierz Zdjęcie:<br>
+                <input type="file" name="image" required>
+            </label>
 
-        <button type="submit">Upload</button>
-    </form>
+
+            <label>
+                Nazwa Produktu:<br>
+                <input type="text" name="productName" required>
+            </label>
+
+            <label>
+                Cena:<br>
+                <input type="number" name="price" step="0.01" required>
+            </label>
+
+            <label>
+                Wybierz Producenta:<br>
+                <select name="producer" id="producer">
+                    <?php foreach ($producers as $producer): ?>
+                        <option value=<?= $producer['producerId'] ?>>
+                            <?= $producer['producer'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+
+
+            <button type="submit">Dodaj</button>
+        </form>
+    </section>
     <a class="logout-link" href="utils/logout.php">
         <img src="images/logout_icon.png" alt="Logout icon" width="40px"/>
         Wyloguj się

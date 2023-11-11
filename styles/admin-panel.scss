@@ -8,38 +8,92 @@ main.admin-panel{
     margin: 10px;
   }
 
-  .product-admin-list{
-    height: 600px;
-    width: 800px;
-    background-color: $basic_green_half;
-    border: 3px solid black;
-    padding: 10px;
-    overflow-y: auto;
+  h2{
+    border-bottom: 4px solid black;
+  }
 
-    .product-admin{
+  .admin-section-products{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 20px;
+    padding-bottom: 20px;
+
+
+    form{
       display: flex;
+      flex-direction: column;
       align-items: center;
-      font-size: 130%;
-      height: 120px;
-      margin-bottom: 20px;
-      gap: 20px;
+      gap: 12px;
+      border: 3px solid black;
+      padding: 0 20px 20px 20px;
 
-      .trash-btn {
-        background: none;
-        border: none;
-        padding: 0px;
-        transition-duration: 200ms;
+      input {
+        font-size: 90%;
+        border-radius: 6px;
+        border: 3px solid black;
+        padding: 4px;
+      }
+      select{
+        font-size: 90%;
+        width: 140px;
+      }
+      label{
+        font-weight: 500;
+        font-size: 130%;
+      }
+
+      button {
+        background-color: $basic_green;
+        padding: 8px;
+        margin: 0 auto;
+        border: 3px solid black;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 110%;
+        transition-duration: 300ms;
         cursor: pointer;
 
         &:hover {
-          scale: 1.2;
-          rotate: 25deg;
+          scale: 1.1;
         }
       }
 
-      img{
-        object-fit: contain;
+    }
+
+    .product-admin-list{
+      height: 600px;
+      background-color: $basic_green_half;
+      border: 3px solid black;
+      padding: 20px 40px 20px 20px;
+      overflow-y: auto;
+
+      .product-admin{
+        display: flex;
+        align-items: center;
+        font-size: 130%;
         height: 120px;
+        margin-bottom: 20px;
+        gap: 20px;
+
+        .trash-btn {
+          background: none;
+          border: none;
+          padding: 0px;
+          transition-duration: 200ms;
+          cursor: pointer;
+
+          &:hover {
+            scale: 1.2;
+            rotate: 25deg;
+          }
+        }
+
+        img{
+          object-fit: contain;
+          height: 120px;
+        }
       }
     }
   }
