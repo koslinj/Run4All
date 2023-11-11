@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["admin-panel.scss","globals.scss"],"names":[],"mappings":"AAIE;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA,kBCZe;EDaf;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA","file":"admin-panel.css"}
+{"version":3,"sourceRoot":"","sources":["admin-panel.scss","globals.scss"],"names":[],"mappings":"AAIE;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA,kBCZe;EDaf;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA","file":"admin-panel.css"}

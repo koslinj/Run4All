@@ -54,7 +54,7 @@ include_once('utils/template.php');
     <div class="product-admin-list">
         <?php foreach ($products as $product): ?>
             <div id="product_<?= $product['productId'] ?>" class="product-admin">
-                <img src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
+                <img style="box-shadow: 0 0 5px 0.1px" src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
                 <p><?= $product['productName'] ?></p>
                 <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
                     <img src="images/trash_icon.png" alt="Trash Icon" width="30px">

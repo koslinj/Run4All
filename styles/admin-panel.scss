@@ -9,18 +9,19 @@ main.admin-panel{
   }
 
   .product-admin-list{
-    height: 900px;
+    height: 600px;
     width: 800px;
     background-color: $basic_green_half;
     border: 3px solid black;
     padding: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     .product-admin{
       display: flex;
       align-items: center;
       font-size: 130%;
       height: 120px;
+      margin-bottom: 20px;
       gap: 20px;
 
       .trash-btn {
@@ -38,7 +39,7 @@ main.admin-panel{
 
       img{
         object-fit: contain;
-        max-height: 120px;
+        height: 120px;
       }
     }
   }

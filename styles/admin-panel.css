@@ -4,18 +4,19 @@ main.admin-panel h1 {
   margin: 10px;
 }
 main.admin-panel .product-admin-list {
-  height: 900px;
+  height: 600px;
   width: 800px;
   background-color: rgba(154, 255, 145, 0.2);
   border: 3px solid black;
   padding: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 main.admin-panel .product-admin-list .product-admin {
   display: flex;
   align-items: center;
   font-size: 130%;
   height: 120px;
+  margin-bottom: 20px;
   gap: 20px;
 }
 main.admin-panel .product-admin-list .product-admin .trash-btn {
@@ -31,7 +32,7 @@ main.admin-panel .product-admin-list .product-admin .trash-btn:hover {
 }
 main.admin-panel .product-admin-list .product-admin img {
   object-fit: contain;
-  max-height: 120px;
+  height: 120px;
 }
 
 /*# sourceMappingURL=admin-panel.css.map */
