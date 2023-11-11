@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="../styles/order.css">
     <link rel="stylesheet" href="../styles/order-second.css">
     <link rel="stylesheet" href="../styles/order-third.css">
+    <link rel="stylesheet" href="../styles/admin-panel.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">

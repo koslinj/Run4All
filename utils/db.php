@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
-$port = 3306;
+$port = 3308;
 $dbname = "iab_240712";
 $username = "root";
 $password = "";

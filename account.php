@@ -9,6 +9,11 @@ if (empty($_SESSION['user_id'])) {
     exit();
 }
 
+if ($_SESSION['role'] === 'admin') {
+    header("Location: admin-panel.php");
+    exit();
+}
+
 $user_id = $_SESSION['user_id'];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["town"]) && isset($_POST["street"]) && isset($_POST["number"])) {

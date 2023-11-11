@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Validate user input - perform additional validation as needed
 
-        $sql = "SELECT userId, password FROM users WHERE password_email = :email";
+        $sql = "SELECT userId, password, role FROM users WHERE password_email = :email";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
@@ -60,6 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($row && password_verify($password, $row['password'])) {
                 // Successful login
                 $_SESSION['user_id'] = $row['userId'];
+                $_SESSION['role'] = $row['role'];
+
+                if ($_SESSION['role'] === 'admin') {
+                    header("Location: admin-panel.php");
+                    exit();
+                }
+
                 if (isset($_SESSION['cart'])) {
                     $cart = $_SESSION["cart"];
                     saveCartFromSession($cart, $row['userId']);

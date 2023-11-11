@@ -6,6 +6,10 @@ if (isset($_SESSION['user_id'])) {
     unset($_SESSION['user_id']);
 }
 
+if (isset($_SESSION['role'])) {
+    unset($_SESSION['role']);
+}
+
 if (isset($_SESSION['order'])) {
     unset($_SESSION['order']);
 }
