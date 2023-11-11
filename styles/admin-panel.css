@@ -14,6 +14,26 @@ main.admin-panel .admin-section-products {
   row-gap: 20px;
   padding-bottom: 20px;
 }
+main.admin-panel .admin-section-products .change-product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+main.admin-panel .admin-section-products .change-product-list .change-product-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-size: 90%;
+}
+main.admin-panel .admin-section-products .change-product-list .change-product-item img {
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+main.admin-panel .admin-section-products .change-product-list .change-product-item img:hover {
+  scale: 1.1;
+  rotate: 25deg;
+}
 main.admin-panel .admin-section-products form {
   display: flex;
   flex-direction: column;

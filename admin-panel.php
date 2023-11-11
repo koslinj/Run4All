@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $price = $_POST["price"];
 
             // Now you can store the path in your database
-            insertProductImage($id, $name, $price, $target_file);
+            insertProductImageAdmin($id, $name, $price, $target_file);
 
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -55,16 +55,37 @@ include_once('utils/template.php');
         <div class="product-admin-list">
             <input oninput="searchProduct()" type="text" id="searchInput" placeholder="Wyszukaj po nazwie...">
             <?php foreach ($products as $product): ?>
-                <div id="product_<?= $product['productId'] ?>" class="product-admin" data-product-name="<?= $product['productName'] ?>">
-                    <img style="box-shadow: 0 0 5px 0.1px" src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
+                <div id="product_<?= $product['productId'] ?>" class="product-admin"
+                     data-product-name="<?= $product['productName'] ?>">
+                    <img style="box-shadow: 0 0 5px 0.1px" src="<?= $product['path'] ?>"
+                         alt="Product <?= $product['productId'] ?>" width="150px">
                     <p><?= $product['productName'] ?></p>
-                    <button class="trash-btn">
+                    <button onclick="toggleProductForm(<?= $product['productId'] ?>)" class="trash-btn">
                         <img src="images/edit_icon.png" alt="Edit Icon" width="30px">
                     </button>
                     <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
                         <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
                     </button>
                 </div>
+                <form id="edit-form-product<?= $product['productId'] ?>" style="display: none" action="admin-panel.php"
+                      method="POST">
+                    <input type="hidden" name="contactId" value="<?= $product['productId'] ?>">
+
+                    <label>Rozmiary:<br>
+                        <div class="change-product-list">
+                            <?php
+                            $sizes = getSizesByProductIdAdmin($product['productId']);
+                            foreach ($sizes as $size): ?>
+                                <div class="change-product-item">
+                                    <?= $size['size'] ?>
+                                    <img src="images/trash_icon.png" alt="Trash Icon" width="22px">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </label>
+
+                    <button type="submit">Zapisz</button>
+                </form>
             <?php endforeach; ?>
         </div>
         <form action="admin-panel.php" method="post" enctype="multipart/form-data">

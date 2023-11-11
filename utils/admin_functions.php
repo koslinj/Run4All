@@ -18,7 +18,7 @@ function getAllProducersAdmin()
     return $producers;
 }
 
-function insertProductImage($id, $name, $price, $path)
+function insertProductImageAdmin($id, $name, $price, $path)
 {
     global $conn;
     $sql = "INSERT INTO products(producerId, productName, price, path) VALUES(:id, :name, :price, :path)";
@@ -30,10 +30,20 @@ function insertProductImage($id, $name, $price, $path)
     $stmt->execute();
 }
 
-function deleteProduct($id)
+function deleteProductAdmin($id)
 {
     global $conn;
     $stmt = $conn->prepare("DELETE FROM products WHERE productId = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
+}
+
+function getSizesByProductIdAdmin(int $productId)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT size FROM sizes WHERE productId = :id");
+    $stmt->bindParam(':id', $productId);
+    $stmt->execute();
+    $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $sizes;
 }

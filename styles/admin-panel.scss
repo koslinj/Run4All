@@ -20,6 +20,28 @@ main.admin-panel{
     row-gap: 20px;
     padding-bottom: 20px;
 
+    .change-product-list{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+
+      .change-product-item{
+        @include flex-center;
+        gap: 4px;
+        font-size: 90%;
+
+        img{
+          transition-duration: 200ms;
+          cursor: pointer;
+
+          &:hover{
+            scale: 1.1;
+            rotate: 25deg;
+          }
+        }
+      }
+    }
+
 
     form{
       display: flex;

@@ -41,3 +41,9 @@ function searchProduct(){
         }
     });
 }
+
+function toggleProductForm(id) {
+    const editForm = document.getElementById("edit-form-product" + id);
+
+    editForm.style.display = editForm.style.display === "none" ? "flex" : "none";
+}
