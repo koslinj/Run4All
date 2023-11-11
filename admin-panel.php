@@ -9,8 +9,6 @@ if (empty($_SESSION['user_id'])) {
     exit();
 }
 
-$products = getAllProductsAdmin();
-
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if file was uploaded without errors
@@ -22,8 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
 
-            // Now you can store the path in your database
+            $id = $_POST["producer"];
+            $name = $_POST["productName"];
+            $price = $_POST["price"];
 
+            // Now you can store the path in your database
+            insertProductImage($id, $name, $price, $target_file);
 
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -31,7 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $_FILES["image"]["error"];
     }
+
+    header("Location: admin-panel.php");
+    exit();
 }
+
+$products = getAllProductsAdmin();
+$producers = getAllProducersAdmin();
 
 ?>
 
@@ -43,9 +51,17 @@ include_once('utils/template.php');
 <main class="admin-panel">
     <h1>Panel Administratora</h1>
     <h2>Produkty</h2>
-    <?php foreach ($products as $product): ?>
-        <p><?= $product['path'] ?></p>
-    <?php endforeach; ?>
+    <div class="product-admin-list">
+        <?php foreach ($products as $product): ?>
+            <div id="product_<?= $product['productId'] ?>" class="product-admin">
+                <img src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
+                <p><?= $product['productName'] ?></p>
+                <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
+                    <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
+                </button>
+            </div>
+        <?php endforeach; ?>
+    </div>
     <form action="admin-panel.php" method="post" enctype="multipart/form-data">
         <label for="image">Choose Image:</label>
         <input type="file" name="image" id="image" required>
@@ -54,7 +70,16 @@ include_once('utils/template.php');
         <input type="text" name="productName" id="productName" required>
 
         <label for="price">Price:</label>
-        <input type="number" name="price" id="price" required>
+        <input type="number" name="price" id="price" step="0.01" required>
+
+        <label for="producer">Select Producer:</label>
+        <select name="producer" id="producer">
+            <?php foreach ($producers as $producer): ?>
+                <option value=<?= $producer['producerId'] ?>>
+                    <?= $producer['producer'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
 
         <button type="submit">Upload</button>
     </form>
@@ -62,6 +87,6 @@ include_once('utils/template.php');
         <img src="images/logout_icon.png" alt="Logout icon" width="40px"/>
         Wyloguj się
     </a>
-    <script src="jsActions/account.js"></script>
+    <script src="jsActions/admin.js"></script>
 </main>
 
