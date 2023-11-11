@@ -23,3 +23,21 @@ async function deleteProduct(productId) {
         console.error(error);
     }
 }
+
+function searchProduct(){
+    const searchInput = document.getElementById('searchInput');
+    const productList = document.querySelector('.product-admin-list');
+
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    // Loop through each product div and hide/show based on the search term
+    Array.from(productList.getElementsByClassName('product-admin')).forEach(product => {
+        const productName = product.dataset.productName.toLowerCase();
+
+        if (productName.includes(searchTerm)) {
+            product.style.display = 'flex';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}

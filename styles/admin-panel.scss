@@ -69,6 +69,14 @@ main.admin-panel{
       padding: 20px 40px 20px 20px;
       overflow-y: auto;
 
+      input {
+        font-size: 140%;
+        border-radius: 6px;
+        border: 3px solid black;
+        padding: 4px;
+        margin-bottom: 16px;
+      }
+
       .product-admin{
         display: flex;
         align-items: center;
@@ -86,7 +94,7 @@ main.admin-panel{
 
           &:hover {
             scale: 1.2;
-            rotate: 25deg;
+            rotate: 45deg;
           }
         }
 

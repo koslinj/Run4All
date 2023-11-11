@@ -53,10 +53,14 @@ include_once('utils/template.php');
     <h2>Produkty</h2>
     <section class="admin-section-products">
         <div class="product-admin-list">
+            <input oninput="searchProduct()" type="text" id="searchInput" placeholder="Wyszukaj po nazwie...">
             <?php foreach ($products as $product): ?>
-                <div id="product_<?= $product['productId'] ?>" class="product-admin">
+                <div id="product_<?= $product['productId'] ?>" class="product-admin" data-product-name="<?= $product['productName'] ?>">
                     <img style="box-shadow: 0 0 5px 0.1px" src="<?= $product['path'] ?>" alt="Product <?= $product['productId'] ?>" width="150px">
                     <p><?= $product['productName'] ?></p>
+                    <button class="trash-btn">
+                        <img src="images/edit_icon.png" alt="Edit Icon" width="30px">
+                    </button>
                     <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
                         <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
                     </button>
