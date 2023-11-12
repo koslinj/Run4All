@@ -22,8 +22,16 @@ include_once('components/navbar.php');
         ?>
     </nav>
     <div class="right">
-        <h2>Ubrania</h2>
-        <div class="list">
+        <div class="sorting-nav">
+            <h2>Ubrania</h2>
+            <select id="sortDropdown">
+                <option value="priceLowToHigh">Od najtańszych</option>
+                <option value="priceHighToLow">Od najdroższych</option>
+                <option value="nameAZ">od A do Z</option>
+                <option value="nameZA">od Z do A</option>
+            </select>
+        </div>
+        <div class="list" id="products-container">
             <?php if (!empty($products)): ?>
                 <?php foreach ($products as $product): ?>
                     <div class='product-on-list'>
@@ -40,6 +48,7 @@ include_once('components/navbar.php');
             <?php endif; ?>
         </div>
     </div>
+    <script src="jsActions/sorting.js"></script>
 </main>
 
 <?php

@@ -11,6 +11,18 @@
 .products-page .right {
   padding-left: 10px;
 }
+.products-page .right .sorting-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.products-page .right .sorting-nav select {
+  font-size: 120%;
+  padding: 8px;
+  font-weight: 500;
+  border: 3px solid black;
+  border-radius: 6px;
+}
 .products-page .right .list {
   display: flex;
   flex-wrap: wrap;
