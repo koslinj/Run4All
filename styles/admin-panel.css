@@ -1,3 +1,33 @@
+main.admin-panel .logout-link {
+  background-color: rgba(255, 0, 0, 0.5);
+  font-size: 120%;
+  font-weight: 500;
+  width: 180px;
+  padding: 12px;
+  border: 3px solid black;
+  border-radius: 10px;
+  transition-duration: 300ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+main.admin-panel .logout-link:hover {
+  text-decoration: underline;
+  scale: 1.15;
+}
+main.admin-panel .input-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+main.admin-panel .input-search input {
+  font-size: 140%;
+  border-radius: 8px;
+  border: 3px solid black;
+  padding: 4px;
+}
 main.admin-panel h1 {
   text-align: center;
   font-size: 36px;
@@ -5,6 +35,9 @@ main.admin-panel h1 {
 }
 main.admin-panel h2 {
   border-bottom: 4px solid black;
+}
+main.admin-panel .admin-section-orders {
+  display: flex;
 }
 main.admin-panel .admin-section-orders .orders-admin-list {
   height: 600px;
@@ -23,17 +56,20 @@ main.admin-panel .admin-section-orders .orders-admin-list input {
 main.admin-panel .admin-section-orders .orders-admin-list .order-admin {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   font-size: 130%;
   margin-bottom: 20px;
-  gap: 28px;
+  column-gap: 28px;
+  row-gap: 6px;
   background-color: white;
   padding: 8px;
   border: 2px solid black;
   border-radius: 8px;
 }
 main.admin-panel .admin-section-orders .orders-admin-list .order-admin select {
-  font-size: 110%;
-  padding: 8px;
+  font-size: 100%;
+  padding: 8px 2px;
+  font-weight: 500;
 }
 main.admin-panel .admin-section-products {
   display: flex;
@@ -86,6 +122,8 @@ main.admin-panel .admin-section-products .admin-form input {
 main.admin-panel .admin-section-products .admin-form select {
   font-size: 90%;
   width: 140px;
+  padding: 6px 2px;
+  font-weight: 500;
 }
 main.admin-panel .admin-section-products .admin-form .main-label {
   font-weight: 500;
@@ -96,12 +134,12 @@ main.admin-panel .admin-section-products .admin-form label {
 }
 main.admin-panel .admin-section-products .admin-form button {
   background-color: #9AFF91;
-  padding: 8px;
+  padding: 8px 20px;
   margin: 0 auto;
   border: 3px solid black;
   border-radius: 10px;
   font-weight: 500;
-  font-size: 110%;
+  font-size: 120%;
   transition-duration: 300ms;
   cursor: pointer;
 }

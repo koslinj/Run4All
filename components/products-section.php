@@ -1,6 +1,9 @@
+<div class="input-search">
+    <input class="input-search" oninput="searchProduct()" type="text" id="searchInput" placeholder="Wyszukaj po nazwie...">
+    <img src="images/search_icon.png" alt="Search Icon" width="40px">
+</div>
 <section class="admin-section-products">
     <div class="product-admin-list">
-        <input oninput="searchProduct()" type="text" id="searchInput" placeholder="Wyszukaj po nazwie...">
         <?php foreach ($products as $product): ?>
             <div id="product_<?= $product['productId'] ?>" class="product-admin"
                  data-product-name="<?= $product['productName'] ?>">
@@ -41,7 +44,7 @@
         <h3>Dodaj Produkt</h3>
         <label class="main-label">
             Wybierz Zdjęcie:<br>
-            <input type="file" name="image" required>
+            <input style="width: 260px" type="file" name="image" required>
         </label>
 
         <label class="main-label">
@@ -88,11 +91,11 @@
 
         <div>
             <label class="main-label">Kolory:</label>
-            <div>
+            <div style="display: flex; flex-wrap: wrap; column-gap: 16px; row-gap: 8px">
                 <?php foreach ($colors as $color): ?>
                     <label>
-                        <?= $color["color"] ?>
                         <input type="checkbox" name="color[]" value=<?= $color["colorId"] ?>>
+                        <?= $color["color"] ?>
                         <br>
                     </label>
                 <?php endforeach; ?>

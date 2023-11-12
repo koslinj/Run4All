@@ -69,17 +69,38 @@ include_once('utils/template.php');
     <h2>Produkty</h2>
     <?php include_once('components/products-section.php'); ?>
     <h2>Zamówienia</h2>
+    <div class="input-search">
+        <input size="28" oninput="searchOrder('date')" type="text" id="searchOrderInput-date" placeholder="Wyszukaj po dacie (rrrr-mm-dd)">
+        <img src="images/search_icon.png" alt="Search Icon" width="40px">
+    </div>
+    <div class="input-search">
+        <input size="28" oninput="searchOrder('email')" type="text" id="searchOrderInput-email" placeholder="Wyszukaj po emailu">
+        <img src="images/search_icon.png" alt="Search Icon" width="40px">
+    </div>
     <section class="admin-section-orders">
         <div class="orders-admin-list">
-            <input size="28" oninput="searchOrder()" type="text" id="searchOrderInput" placeholder="Wyszukaj po dacie (rrrr-mm-dd)">
             <?php foreach ($orders as $order): ?>
-                <div class="order-admin" data-order-date="<?= $order['date'] ?>">
-                    <p><?= $order['date'] ?></p>
-                    <select name="status" id="statusSelect<?= $order['orderId'] ?>" onchange="updateStatus(<?= $order['orderId'] ?>)">
-                        <?php foreach ($statuses as $status): ?>
-                            <option value="<?= $status['status'] ?>" <?= ($status['status'] == $order['status']) ? "selected" : "" ?> ><?= $status['status'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="order-admin" data-order-date="<?= $order['date'] ?>" data-email="<?= $order['email'] ?>">
+                    <p>
+                        <i style="color: rgb(128,128,128); font-size: 16px">Data zamówienia:</i><br>
+                        <b><?= $order['date'] ?></b>
+                    </p>
+                    <p>
+                        <i style="color: rgb(128,128,128); font-size: 16px">Email:</i><br>
+                        <b><?= $order['email'] ?></b>
+                    </p>
+                    <p>
+                        <i style="color: rgb(128,128,128); font-size: 16px">Dostawca:</i><br>
+                        <b><?= $order['deliverer'] ?></b>
+                    </p>
+                    <div>
+                        <i style="color: rgb(128,128,128); font-size: 16px">Status:</i><br>
+                        <select name="status" id="statusSelect<?= $order['orderId'] ?>" onchange="updateStatus(<?= $order['orderId'] ?>)">
+                            <?php foreach ($statuses as $status): ?>
+                                <option value="<?= $status['status'] ?>" <?= ($status['status'] == $order['status']) ? "selected" : "" ?> ><?= $status['status'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

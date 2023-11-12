@@ -1,6 +1,37 @@
 @import "globals";
 
 main.admin-panel{
+  .logout-link {
+    background-color: rgba(255, 0, 0, 0.5);
+    font-size: 120%;
+    font-weight: 500;
+    width: 180px;
+    padding: 12px;
+    border: 3px solid black;
+    border-radius: 10px;
+    transition-duration: 300ms;
+    @include flex-center;
+    margin: 30px auto;
+
+    &:hover {
+      text-decoration: underline;
+      scale: 1.15;
+    }
+  }
+
+  .input-search{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    input{
+      font-size: 140%;
+      border-radius: 8px;
+      border: 3px solid black;
+      padding: 4px;
+    }
+  }
 
   h1{
     text-align: center;
@@ -13,6 +44,7 @@ main.admin-panel{
   }
 
   .admin-section-orders{
+    display: flex;
     .orders-admin-list{
       height: 600px;
       background-color: $basic_green_half;
@@ -31,17 +63,20 @@ main.admin-panel{
       .order-admin{
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         font-size: 130%;
         margin-bottom: 20px;
-        gap: 28px;
+        column-gap: 28px;
+        row-gap: 6px;
         background-color: white;
         padding: 8px;
         border: 2px solid black;
         border-radius: 8px;
 
         select{
-          font-size: 110%;
-          padding: 8px;
+          font-size: 100%;
+          padding: 8px 2px;
+          font-weight: 500;
         }
       }
     }
@@ -102,6 +137,8 @@ main.admin-panel{
       select{
         font-size: 90%;
         width: 140px;
+        padding: 6px 2px;
+        font-weight: 500;
       }
       .main-label{
         font-weight: 500;
@@ -113,12 +150,12 @@ main.admin-panel{
 
       button {
         background-color: $basic_green;
-        padding: 8px;
+        padding: 8px 20px;
         margin: 0 auto;
         border: 3px solid black;
         border-radius: 10px;
         font-weight: 500;
-        font-size: 110%;
+        font-size: 120%;
         transition-duration: 300ms;
         cursor: pointer;
 

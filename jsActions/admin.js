@@ -221,17 +221,19 @@ async function insertSize(productId, type) {
     }
 }
 
-function searchOrder(){
-    const searchInput = document.getElementById('searchOrderInput');
+function searchOrder(type){
+    const searchInput = document.getElementById('searchOrderInput-' + type);
     const ordersList = document.querySelector('.orders-admin-list');
 
     const searchTerm = searchInput.value.trim().toLowerCase();
 
     // Loop through each product div and hide/show based on the search term
     Array.from(ordersList.getElementsByClassName('order-admin')).forEach(order => {
-        const date = order.dataset.orderDate.toLowerCase();
+        let text;
+        if(type === 'date') text = order.dataset.orderDate.toLowerCase();
+        else if(type === 'email') text = order.dataset.email.toLowerCase();
 
-        if (date.includes(searchTerm)) {
+        if (text.includes(searchTerm)) {
             order.style.display = 'flex';
         } else {
             order.style.display = 'none';
