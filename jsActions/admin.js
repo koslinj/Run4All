@@ -220,3 +220,47 @@ async function insertSize(productId, type) {
         console.error(error);
     }
 }
+
+function searchOrder(){
+    const searchInput = document.getElementById('searchOrderInput');
+    const ordersList = document.querySelector('.orders-admin-list');
+
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    // Loop through each product div and hide/show based on the search term
+    Array.from(ordersList.getElementsByClassName('order-admin')).forEach(order => {
+        const date = order.dataset.orderDate.toLowerCase();
+
+        if (date.includes(searchTerm)) {
+            order.style.display = 'flex';
+        } else {
+            order.style.display = 'none';
+        }
+    });
+}
+
+async function updateStatus(id) {
+    let statusSelect = document.getElementById("statusSelect" + id);
+    let selectedStatus = statusSelect.value;
+
+    try {
+        let url = "serverActions/updateStatus.php"
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
+            },
+            body: "status=" + selectedStatus + "&orderId=" + id, // Send the data
+        });
+
+        console.log(response)
+
+        if (!response.ok) {
+            throw new Error("Error deleting the product: " + response.status);
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}

@@ -54,6 +54,9 @@ $products = getAllProductsAdmin();
 $producers = getAllProducersAdmin();
 $colors = getAllColorsAdmin();
 
+$orders = getAllOrdersAdmin();
+$statuses = getAllStatusesAdmin();
+
 ?>
 
 <?php
@@ -65,7 +68,22 @@ include_once('utils/template.php');
     <h1>Panel Administratora</h1>
     <h2>Produkty</h2>
     <?php include_once('components/products-section.php'); ?>
-    <section class="admin-section-products"></section>
+    <h2>Zamówienia</h2>
+    <section class="admin-section-orders">
+        <div class="orders-admin-list">
+            <input size="28" oninput="searchOrder()" type="text" id="searchOrderInput" placeholder="Wyszukaj po dacie (rrrr-mm-dd)">
+            <?php foreach ($orders as $order): ?>
+                <div class="order-admin" data-order-date="<?= $order['date'] ?>">
+                    <p><?= $order['date'] ?></p>
+                    <select name="status" id="statusSelect<?= $order['orderId'] ?>" onchange="updateStatus(<?= $order['orderId'] ?>)">
+                        <?php foreach ($statuses as $status): ?>
+                            <option value="<?= $status['status'] ?>" <?= ($status['status'] == $order['status']) ? "selected" : "" ?> ><?= $status['status'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
     <a class="logout-link" href="utils/logout.php">
         <img src="images/logout_icon.png" alt="Logout icon" width="40px"/>
         Wyloguj się

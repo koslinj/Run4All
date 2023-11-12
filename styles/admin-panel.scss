@@ -12,6 +12,41 @@ main.admin-panel{
     border-bottom: 4px solid black;
   }
 
+  .admin-section-orders{
+    .orders-admin-list{
+      height: 600px;
+      background-color: $basic_green_half;
+      border: 3px solid black;
+      padding: 20px;
+      overflow-y: auto;
+
+      input {
+        font-size: 140%;
+        border-radius: 6px;
+        border: 3px solid black;
+        padding: 4px;
+        margin-bottom: 16px;
+      }
+
+      .order-admin{
+        display: flex;
+        align-items: center;
+        font-size: 130%;
+        margin-bottom: 20px;
+        gap: 28px;
+        background-color: white;
+        padding: 8px;
+        border: 2px solid black;
+        border-radius: 8px;
+
+        select{
+          font-size: 110%;
+          padding: 8px;
+        }
+      }
+    }
+  }
+
   .admin-section-products{
     display: flex;
     align-items: flex-start;

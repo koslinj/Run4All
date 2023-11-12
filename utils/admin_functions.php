@@ -27,6 +27,33 @@ function getAllColorsAdmin()
     return $colors;
 }
 
+function getAllOrdersAdmin()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM orders");
+    $stmt->execute();
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $orders;
+}
+
+function getAllStatusesAdmin()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM statuses");
+    $stmt->execute();
+    $statuses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $statuses;
+}
+
+function updateStatusAdmin($status, $id)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE orders SET status = :status WHERE orderId = :id");
+    $stmt->bindParam(':status', $status);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
+
 function insertProductAdmin($id, $name, $price, $path)
 {
     global $conn;
