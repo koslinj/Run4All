@@ -18,7 +18,7 @@ function getAllProducersAdmin()
     return $producers;
 }
 
-function insertProductImageAdmin($id, $name, $price, $path)
+function insertProductAdmin($id, $name, $price, $path)
 {
     global $conn;
     $sql = "INSERT INTO products(producerId, productName, price, path) VALUES(:id, :name, :price, :path)";
@@ -28,6 +28,20 @@ function insertProductImageAdmin($id, $name, $price, $path)
     $stmt->bindParam(':price', $price);
     $stmt->bindParam(':path', $path);
     $stmt->execute();
+    return $conn->lastInsertId();
+}
+
+function insertSizesAdmin($id, $sizes, $type)
+{
+    global $conn;
+    foreach ($sizes as $size){
+        $sql = "INSERT INTO sizes(productId, size, type) VALUES(:id, :size, :type)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':size', $size);
+        $stmt->bindParam(':type', $type);
+        $stmt->execute();
+    }
 }
 
 function deleteProductAdmin($id)

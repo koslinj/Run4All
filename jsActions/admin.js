@@ -47,3 +47,62 @@ function toggleProductForm(id) {
 
     editForm.style.display = editForm.style.display === "none" ? "flex" : "none";
 }
+
+function updateSizes() {
+    var categorySelect = document.getElementById("typeSelect");
+    var sizesContainer = document.getElementById("sizesContainer");
+
+    // Get the selected category value
+    var selectedCategory = categorySelect.value;
+
+    // Clear existing checkboxes
+    sizesContainer.innerHTML = "";
+
+    // Add checkboxes based on the selected category
+    if (selectedCategory === "buty") {
+        addCheckboxesForButy();
+    } else {
+        addCheckboxesForUbraniaAkcesoria();
+    }
+}
+
+updateSizes()
+
+
+function addCheckboxesForButy() {
+    var sizesContainer = document.getElementById("sizesContainer");
+
+    // Add checkboxes for buty
+    var sizesForButy = ["36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46"];
+    for (var i = 0; i < sizesForButy.length; i++) {
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "size[]";
+        checkbox.value = sizesForButy[i];
+
+        var label = document.createElement("label");
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(sizesForButy[i]));
+
+        sizesContainer.appendChild(label);
+    }
+}
+
+function addCheckboxesForUbraniaAkcesoria() {
+    var sizesContainer = document.getElementById("sizesContainer");
+
+    // Add checkboxes for ubrania and akcesoria
+    var sizesForUbraniaAkcesoria = ["S", "M", "L", "XL"];
+    for (var i = 0; i < sizesForUbraniaAkcesoria.length; i++) {
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "size[]";
+        checkbox.value = sizesForUbraniaAkcesoria[i];
+
+        var label = document.createElement("label");
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(sizesForUbraniaAkcesoria[i]));
+
+        sizesContainer.appendChild(label);
+    }
+}

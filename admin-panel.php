@@ -13,7 +13,11 @@ if (empty($_SESSION['user_id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if file was uploaded without errors
     if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $target_dir = "images/products/clothes/"; // Directory where you want to store the images
+        $type = $_POST["type"];
+        if ($type == "ubrania") $target_dir = "images/products/clothes/"; // Directory
+        if ($type == "buty") $target_dir = "images/products/shoes/"; // Directory
+        if ($type == "akcesoria") $target_dir = "images/products/accessories/"; // Directory
+
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
         // Move the uploaded file to the specified directory
@@ -23,9 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id = $_POST["producer"];
             $name = $_POST["productName"];
             $price = $_POST["price"];
+            $sizes = $_POST["size"];
 
             // Now you can store the path in your database
-            insertProductImageAdmin($id, $name, $price, $target_file);
+            $insertId = insertProductAdmin($id, $name, $price, $target_file);
+            insertSizesAdmin($insertId, $sizes, $type);
 
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -95,7 +101,6 @@ include_once('utils/template.php');
                 <input type="file" name="image" required>
             </label>
 
-
             <label>
                 Nazwa Produktu:<br>
                 <input type="text" name="productName" required>
@@ -117,6 +122,16 @@ include_once('utils/template.php');
                 </select>
             </label>
 
+            <label>
+                Wybierz Rodzaj:<br>
+                <select id="typeSelect" name="type" onchange="updateSizes()">
+                    <option value="ubrania">ubrania</option>
+                    <option value="buty">buty</option>
+                    <option value="akcesoria">akcesoria</option>
+                </select>
+            </label>
+
+            <div id="sizesContainer"></div>
 
             <button type="submit">Dodaj</button>
         </form>
