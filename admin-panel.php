@@ -28,10 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $name = $_POST["productName"];
             $price = $_POST["price"];
             $sizes = $_POST["size"];
+            $category = $_POST["category"];
+            $colors = $_POST["color"];
+            echo $category. "<br>";
+            var_dump($colors);
 
             // Now you can store the path in your database
             $insertId = insertProductAdmin($id, $name, $price, $target_file);
             insertSizesAdmin($insertId, $sizes, $type);
+            insertCategoryAdmin($category, $insertId);
+            insertColorsAdmin($colors, $insertId);
 
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -46,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $products = getAllProductsAdmin();
 $producers = getAllProducersAdmin();
+$colors = getAllColorsAdmin();
 
 ?>
 
@@ -96,23 +103,23 @@ include_once('utils/template.php');
         </div>
         <form action="admin-panel.php" method="post" enctype="multipart/form-data">
             <h3>Dodaj Produkt</h3>
-            <label>
+            <label class="main-label">
                 Wybierz Zdjęcie:<br>
                 <input type="file" name="image" required>
             </label>
 
-            <label>
+            <label class="main-label">
                 Nazwa Produktu:<br>
                 <input type="text" name="productName" required>
             </label>
 
-            <label>
+            <label class="main-label">
                 Cena:<br>
                 <input type="number" name="price" step="0.01" required>
             </label>
 
-            <label>
-                Wybierz Producenta:<br>
+            <label class="main-label">
+                Producent:<br>
                 <select name="producer" id="producer">
                     <?php foreach ($producers as $producer): ?>
                         <option value=<?= $producer['producerId'] ?>>
@@ -122,16 +129,39 @@ include_once('utils/template.php');
                 </select>
             </label>
 
-            <label>
-                Wybierz Rodzaj:<br>
-                <select id="typeSelect" name="type" onchange="updateSizes()">
-                    <option value="ubrania">ubrania</option>
-                    <option value="buty">buty</option>
-                    <option value="akcesoria">akcesoria</option>
-                </select>
-            </label>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap">
+                <label class="main-label">
+                    Rodzaj:<br>
+                    <select id="typeSelect" name="type" onchange="updateSizes();updateCategories()">
+                        <option value="ubrania">ubrania</option>
+                        <option value="buty">buty</option>
+                        <option value="akcesoria">akcesoria</option>
+                    </select>
+                </label>
 
-            <div id="sizesContainer"></div>
+                <label class="main-label">
+                    Kategoria:<br>
+                    <select name="category" id="categorySelect"></select>
+                </label>
+            </div>
+
+            <div>
+                <label class="main-label">Rozmiary:</label>
+                <div id="sizesContainer"></div>
+            </div>
+
+            <div>
+                <label class="main-label">Kolory:</label>
+                <div>
+                    <?php foreach ($colors as $color): ?>
+                        <label>
+                            <?= $color["color"] ?>
+                            <input type="checkbox" name="color[]" value=<?= $color["colorId"] ?>>
+                            <br>
+                        </label>
+                    <?php endforeach; ?>
+                </div>
+            </div>
 
             <button type="submit">Dodaj</button>
         </form>

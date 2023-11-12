@@ -18,6 +18,15 @@ function getAllProducersAdmin()
     return $producers;
 }
 
+function getAllColorsAdmin()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM colors");
+    $stmt->execute();
+    $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $colors;
+}
+
 function insertProductAdmin($id, $name, $price, $path)
 {
     global $conn;
@@ -44,6 +53,28 @@ function insertSizesAdmin($id, $sizes, $type)
     }
 }
 
+function insertColorsAdmin($colors, $product)
+{
+    global $conn;
+    foreach ($colors as $color){
+        $sql = "INSERT INTO products_colors(colorId, productId) VALUES(:color, :product)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':color', $color);
+        $stmt->bindParam(':product', $product);
+        $stmt->execute();
+    }
+}
+
+function insertCategoryAdmin($category, $product)
+{
+    global $conn;
+    $sql = "INSERT INTO products_categories(categoryId, productId) VALUES(:category, :product)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':category', $category);
+    $stmt->bindParam(':product', $product);
+    $stmt->execute();
+}
+
 function deleteProductAdmin($id)
 {
     global $conn;
@@ -60,4 +91,14 @@ function getSizesByProductIdAdmin(int $productId)
     $stmt->execute();
     $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sizes;
+}
+
+function getCategoriesByTypeAdmin($type)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM categories WHERE type = :type");
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $categories;
 }

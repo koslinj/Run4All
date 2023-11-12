@@ -49,6 +49,14 @@ main.admin-panel{
       gap: 12px;
       border: 3px solid black;
       padding: 0 20px 20px 20px;
+      max-width: 500px;
+      background-color: $basic_green_half;
+
+      #sizesContainer{
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
       input {
         font-size: 90%;
@@ -60,9 +68,12 @@ main.admin-panel{
         font-size: 90%;
         width: 140px;
       }
-      label{
+      .main-label{
         font-weight: 500;
         font-size: 130%;
+      }
+      label{
+        font-size: 110%;
       }
 
       button {

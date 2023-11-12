@@ -106,3 +106,38 @@ function addCheckboxesForUbraniaAkcesoria() {
         sizesContainer.appendChild(label);
     }
 }
+
+function updateCategories() {
+    var typeSelect = document.getElementById("typeSelect");
+    var categorySelect = document.getElementById("categorySelect");
+
+    // Get the selected type value
+    var selectedType = typeSelect.value;
+
+    // Clear existing options
+    categorySelect.innerHTML = "";
+
+    // Fetch categories based on the selected type
+    fetchCategories(selectedType);
+}
+
+updateCategories()
+
+function fetchCategories(type) {
+    // Make an AJAX request to fetch categories based on the selected type
+    // Replace this with your actual AJAX request implementation
+    // Here is a simplified example using fetch API
+    fetch('serverActions/fetch_categories.php?type=' + type)
+        .then(response => response.json())
+        .then(categories => {
+            // Update the category select dropdown with the fetched categories
+            var categorySelect = document.getElementById("categorySelect");
+            categories.forEach(category => {
+                var option = document.createElement("option");
+                option.value = category.categoryId;
+                option.text = category.category;
+                categorySelect.add(option);
+            });
+        })
+        .catch(error => console.error('Error fetching categories:', error));
+}
