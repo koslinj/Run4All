@@ -167,3 +167,56 @@ async function deleteSize(sizeId) {
         console.error(error);
     }
 }
+
+async function insertSize(productId, type) {
+    try {
+        let url = "serverActions/insertSize.php"
+
+        let size = document.getElementById("sizeInput" + productId).value;
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
+            },
+            body: "productId=" + productId + "&size=" + size + "&type=" + type, // Send the data
+        });
+        console.log(response)
+
+        if (!response.ok) {
+            throw new Error("Error deleting the product: " + response.status);
+        }
+
+        let sizeId = await response.text();
+        console.log(sizeId)
+
+        // Create a new change-product-item element
+        const newChangeProductItem = document.createElement('div');
+        newChangeProductItem.classList.add('change-product-item');
+        newChangeProductItem.id = "size-item-" + sizeId // TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        newChangeProductItem.textContent = size;
+
+        // Create the trash icon
+        const trashIcon = document.createElement('img');
+        trashIcon.src = 'images/trash_icon.png';
+        trashIcon.alt = 'Trash Icon';
+        trashIcon.width = 22;
+
+        // Add the click event to delete the size
+        trashIcon.addEventListener('click', function() {
+            deleteSize(sizeId); // TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        });
+
+        // Append the trash icon to the new element
+        newChangeProductItem.appendChild(trashIcon);
+
+        // Append the new element to the change-product-list
+        const changeProductList = document.querySelector(`#edit-form-product${productId} .change-product-list`);
+        changeProductList.appendChild(newChangeProductItem);
+
+        document.getElementById("sizeInput" + productId).value = ''
+
+    } catch (error) {
+        console.error(error);
+    }
+}

@@ -43,7 +43,7 @@ function insertProductAdmin($id, $name, $price, $path)
 function insertSizesAdmin($id, $sizes, $type)
 {
     global $conn;
-    foreach ($sizes as $size){
+    foreach ($sizes as $size) {
         $sql = "INSERT INTO sizes(productId, size, type) VALUES(:id, :size, :type)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id);
@@ -53,10 +53,22 @@ function insertSizesAdmin($id, $sizes, $type)
     }
 }
 
+function insertOneSizeAdmin($id, $size, $type)
+{
+    global $conn;
+    $sql = "INSERT INTO sizes(productId, size, type) VALUES(:id, :size, :type)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':size', $size);
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    return $conn->lastInsertId();
+}
+
 function insertColorsAdmin($colors, $product)
 {
     global $conn;
-    foreach ($colors as $color){
+    foreach ($colors as $color) {
         $sql = "INSERT INTO products_colors(colorId, productId) VALUES(:color, :product)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':color', $color);
@@ -99,6 +111,16 @@ function getSizesByProductIdAdmin(int $productId)
     $stmt->execute();
     $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sizes;
+}
+
+function getTypeByProductIdAdmin(int $productId)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT type FROM sizes WHERE productId = :id");
+    $stmt->bindParam(':id', $productId);
+    $stmt->execute();
+    $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $sizes[0]["type"];
 }
 
 function getCategoriesByTypeAdmin($type)

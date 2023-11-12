@@ -34,7 +34,7 @@ main.admin-panel .admin-section-products .change-product-list .change-product-it
   scale: 1.1;
   rotate: 25deg;
 }
-main.admin-panel .admin-section-products form {
+main.admin-panel .admin-section-products .admin-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -43,29 +43,29 @@ main.admin-panel .admin-section-products form {
   max-width: 500px;
   background-color: rgba(154, 255, 145, 0.2);
 }
-main.admin-panel .admin-section-products form #sizesContainer {
+main.admin-panel .admin-section-products .admin-form #sizesContainer {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-main.admin-panel .admin-section-products form input {
+main.admin-panel .admin-section-products .admin-form input {
   font-size: 90%;
   border-radius: 6px;
   border: 3px solid black;
   padding: 4px;
 }
-main.admin-panel .admin-section-products form select {
+main.admin-panel .admin-section-products .admin-form select {
   font-size: 90%;
   width: 140px;
 }
-main.admin-panel .admin-section-products form .main-label {
+main.admin-panel .admin-section-products .admin-form .main-label {
   font-weight: 500;
   font-size: 130%;
 }
-main.admin-panel .admin-section-products form label {
+main.admin-panel .admin-section-products .admin-form label {
   font-size: 110%;
 }
-main.admin-panel .admin-section-products form button {
+main.admin-panel .admin-section-products .admin-form button {
   background-color: #9AFF91;
   padding: 8px;
   margin: 0 auto;
@@ -76,7 +76,7 @@ main.admin-panel .admin-section-products form button {
   transition-duration: 300ms;
   cursor: pointer;
 }
-main.admin-panel .admin-section-products form button:hover {
+main.admin-panel .admin-section-products .admin-form button:hover {
   scale: 1.1;
 }
 main.admin-panel .admin-section-products .product-admin-list {
@@ -85,6 +85,14 @@ main.admin-panel .admin-section-products .product-admin-list {
   border: 3px solid black;
   padding: 20px 40px 20px 20px;
   overflow-y: auto;
+}
+main.admin-panel .admin-section-products .product-admin-list .edit-product-admin {
+  padding: 10px 4px;
+  border: 3px solid black;
+  background-color: white;
+  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 16px;
 }
 main.admin-panel .admin-section-products .product-admin-list input {
   font-size: 140%;
