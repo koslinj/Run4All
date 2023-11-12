@@ -141,3 +141,29 @@ function fetchCategories(type) {
         })
         .catch(error => console.error('Error fetching categories:', error));
 }
+
+async function deleteSize(sizeId) {
+    try {
+        let url = "serverActions/deleteSize.php"
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
+            },
+            body: "sizeId=" + sizeId, // Send the data
+        });
+
+        console.log(response)
+
+        if (!response.ok) {
+            throw new Error("Error deleting the product: " + response.status);
+        }
+
+        const item = document.getElementById("size-item-" + sizeId);
+        item.remove();
+
+    } catch (error) {
+        console.error(error);
+    }
+}

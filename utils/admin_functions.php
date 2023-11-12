@@ -83,10 +83,18 @@ function deleteProductAdmin($id)
     $stmt->execute();
 }
 
+function deleteSizeAdmin($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM sizes WHERE sizeId = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
+
 function getSizesByProductIdAdmin(int $productId)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT size FROM sizes WHERE productId = :id");
+    $stmt = $conn->prepare("SELECT * FROM sizes WHERE productId = :id");
     $stmt->bindParam(':id', $productId);
     $stmt->execute();
     $sizes = $stmt->fetchAll(PDO::FETCH_ASSOC);

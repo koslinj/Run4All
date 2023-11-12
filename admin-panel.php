@@ -89,9 +89,9 @@ include_once('utils/template.php');
                             <?php
                             $sizes = getSizesByProductIdAdmin($product['productId']);
                             foreach ($sizes as $size): ?>
-                                <div class="change-product-item">
+                                <div class="change-product-item" id="size-item-<?= $size['sizeId'] ?>">
                                     <?= $size['size'] ?>
-                                    <img src="images/trash_icon.png" alt="Trash Icon" width="22px">
+                                    <img onclick="deleteSize(<?= $size['sizeId'] ?>)" src="images/trash_icon.png" alt="Trash Icon" width="22px">
                                 </div>
                             <?php endforeach; ?>
                         </div>
