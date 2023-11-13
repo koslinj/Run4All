@@ -44,6 +44,9 @@ function fromProductToFiltering(key, value, type) {
         case "ubrania":
             page = 'clothes.php?'
             break;
+        case "akcesoria":
+            page = 'accessories.php?'
+            break;
     }
 
     var updatedURL = page + url.searchParams.toString();

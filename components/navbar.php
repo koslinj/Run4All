@@ -53,7 +53,7 @@
                 Ubrania
             </div>
         </a>
-        <a href="">
+        <a href="../../run4all/accessories.php">
             <div class="nav-category">
                 Akcesoria
             </div>
