@@ -416,7 +416,7 @@ function getAllSliders()
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM sliders AS s
             JOIN products as p on s.productId = p.productId
-            ORDER BY sliderId desc");
+            ORDER BY sliderId");
     $stmt->execute();
     $sliders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sliders;
