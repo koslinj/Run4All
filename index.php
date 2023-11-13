@@ -5,19 +5,9 @@ session_start();
 $currentPage = 'RUN 4 ALL | Strona Główna';
 include_once('utils/template.php');
 include_once('components/navbar.php');
-?>
-<style>
-    .main-slider {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        height: 400px;
-    }
 
-    .main-slider img {
-        position: absolute;
-    }
-</style>
+$sliders = getAllSliders()
+?>
 <main class="index">
     <div class="main-slider">
         <img src="images/background.jpg" style="object-fit: cover" alt="Main Image 1" height="400px" width="100%">
@@ -34,28 +24,25 @@ include_once('components/navbar.php');
         <div class="slider-container">
             <div class="slider">
                 <div class="product-slide">
-                    <div class="product">
-                        <img src="images/products/shoes/asics_gel_pulse_13.webp" alt="Product 1">
-                    </div>
-                    <div class="product">
-                        <img src="images/products/shoes/nike_pegasus_trail_4.webp" alt="Product 2">
-                    </div>
-                    <div class="product">
-                        <img src="images/products/shoes/nike_pegasus_38.webp" alt="Product 3">
-                    </div>
+                    <?php for($i = 0; $i<3; $i++): ?>
+                        <div class="product">
+                            <a href="product.php?productName=<?= urlencode($sliders[$i]['productName']) ?>">
+                                <img src="<?= $sliders[$i]['path'] ?>" alt="Product <?= $sliders[$i]['productId'] ?>">
+                                <div class="link-from-slider"><?= $sliders[$i]['productName'] ?></div>
+                            </a>
+                        </div>
+                    <?php endfor; ?>
                 </div>
                 <div class="product-slide">
-                    <div class="product">
-                        <img src="images/products/shoes/asics_novablast_3.webp" alt="Product 4">
-                    </div>
-                    <div class="product">
-                        <img src="images/products/shoes/adidas_galaxy_6.avif" alt="Product 5">
-                    </div>
-                    <div class="product">
-                        <img src="images/products/shoes/adidas_duramo_speed.webp" alt="Product 6">
-                    </div>
+                    <?php for($i = 3; $i<6; $i++): ?>
+                        <div class="product">
+                            <a href="product.php?productName=<?= urlencode($sliders[$i]['productName']) ?>">
+                                <img src="<?= $sliders[$i]['path'] ?>" alt="Product <?= $sliders[$i]['productId'] ?>">
+                                <div class="link-from-slider"><?= $sliders[$i]['productName'] ?></div>
+                            </a>
+                        </div>
+                    <?php endfor; ?>
                 </div>
-                <!-- Add more product slides as needed -->
             </div>
         </div>
         <button onclick="prevSlide()" class="prev-button">
@@ -80,7 +67,6 @@ include_once('components/navbar.php');
                 image.style.left = index * 100 + "%";
             });
 
-            // Start the image slider
             setInterval(function () {
                 // Move to the next image or loop back to the first one
                 currentIndex = (currentIndex + 1) % totalImages;

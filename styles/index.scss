@@ -1,18 +1,30 @@
 @import "globals";
 
 .index {
+
+  .main-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+
+    img {
+      position: absolute;
+    }
+  }
+
   .product-slider {
     width: 100%;
     overflow: hidden;
     position: relative;
 
-    a{
+    a {
       color: rgba(0, 0, 0, 0.7);
       text-decoration: underline;
       font-size: 140%;
     }
 
-    .prev-button, .next-button{
+    .prev-button, .next-button {
       position: absolute;
       top: 50%;
       transform: translateY(-100%);
@@ -23,30 +35,32 @@
       height: 60px;
       cursor: pointer;
 
-      &:hover{
+      &:hover {
         box-shadow: 0 0 4px 1px;
       }
 
-      img{
+      img {
         width: 50px;
       }
     }
 
-    .prev-button{
+    .prev-button {
       left: 4px;
     }
 
-    .next-button{
+    .next-button {
       right: 4px;
-    }
-
-    img {
-      width: 380px;
     }
 
     .slider-container {
       flex: 1;
       overflow: hidden;
+
+      img {
+        object-fit: contain;
+        height: 380px;
+        width: 380px;
+      }
     }
 
     .slider {
@@ -57,11 +71,31 @@
         flex: 0 0 100%; /* Display two products side by side */
         display: flex;
         justify-content: center; /* Space between the products */
-        align-items: center;
         flex-wrap: wrap;
 
         .product {
+          align-items: center;
           padding: 0;
+          position: relative;
+          margin: 10px;
+
+          &:hover {
+            box-shadow: 0 0 6px 1px;
+          }
+
+          a{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          a:hover {
+            .link-from-slider {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
@@ -84,8 +118,11 @@
 @media (max-width: $tablet) {
   .index {
     .product-slider {
-      img {
-        width: 280px;
+      .slider-container{
+        img {
+          height: 280px;
+          width: 280px;
+        }
       }
     }
   }
@@ -94,8 +131,11 @@
 @media (max-width: $mobile) {
   .index {
     .product-slider {
-      img {
-        width: 180px;
+      .slider-container{
+        img {
+          height: 180px;
+          width: 180px;
+        }
       }
     }
   }
@@ -104,16 +144,19 @@
 @media (max-width: $small) {
   .index {
     .product-slider {
-      .prev-button, .next-button{
+      .prev-button, .next-button {
         width: 40px;
         height: 40px;
 
-        img{
+        img {
           width: 30px;
         }
       }
-      img {
-        width: 120px;
+      .slider-container{
+        img {
+          height: 120px;
+          width: 120px;
+        }
       }
     }
   }
