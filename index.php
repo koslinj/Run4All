@@ -1,5 +1,6 @@
 <?php
 include_once('utils/functions.php');
+session_start();
 
 $currentPage = 'RUN 4 ALL | Strona Główna';
 include_once('utils/template.php');

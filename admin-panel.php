@@ -62,6 +62,7 @@ $statuses = getAllStatusesAdmin();
 <?php
 $currentPage = 'RUN 4 ALL | Panel Administratora';
 include_once('utils/template.php');
+include_once('components/navbar.php');
 ?>
 
 <main class="admin-panel">

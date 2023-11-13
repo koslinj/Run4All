@@ -1,5 +1,6 @@
 <?php
 include_once('utils/functions.php');
+session_start();
 
 if (isset($_GET['productName'])) {
     $productName = urldecode($_GET['productName']);

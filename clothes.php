@@ -1,5 +1,6 @@
 <?php
 require("utils/functions.php");
+session_start();
 
 list($params, $sql) = createQuery('ubrania');
 
