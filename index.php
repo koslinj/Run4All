@@ -6,8 +6,24 @@ $currentPage = 'RUN 4 ALL | Strona Główna';
 include_once('utils/template.php');
 include_once('components/navbar.php');
 ?>
+<style>
+    .main-slider {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        height: 400px;
+    }
+
+    .main-slider img {
+        position: absolute;
+    }
+</style>
 <main class="index">
-    <img src="images/background_small.jpg" alt="Runners On The Beach" width="100%">
+    <div class="main-slider">
+        <img src="images/background.jpg" style="object-fit: cover" alt="Main Image 1" height="400px" width="100%">
+        <img src="images/background2.jpg" style="object-fit: cover" alt="Main Image 2" height="400px" width="100%">
+        <img src="images/background3.webp" style="object-fit: cover" alt="Main Image 3" height="400px" width="100%">
+    </div>
     <h1>Najlepszy sklep sportowy dla biegaczy</h1>
     <p>Chcesz zacząć przygodę z bieganiem?<br>
         A może jesteś zawodowym sportowcem?<br>
@@ -51,6 +67,34 @@ include_once('components/navbar.php');
         <a href="../run4all/shoes.php">Zobacz więcej butów</a>
     </div>
     <script src="jsActions/slider.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var interval = 4000; // 5 seconds
+            var currentIndex = 0;
+
+            var images = document.querySelectorAll(".main-slider img");
+            var totalImages = images.length;
+
+            // Set initial position
+            images.forEach(function (image, index) {
+                image.style.left = index * 100 + "%";
+            });
+
+            // Start the image slider
+            setInterval(function () {
+                // Move to the next image or loop back to the first one
+                currentIndex = (currentIndex + 1) % totalImages;
+                console.log(currentIndex)
+
+                // Animate the slider
+                images.forEach(function (image, index) {
+                    var newPosition = (index - currentIndex) * 100 + "%";
+                    image.style.transition = "left 1s";
+                    image.style.left = newPosition;
+                });
+            }, interval);
+        });
+    </script>
 </main>
 <?php
 include_once('components/footer.php');
