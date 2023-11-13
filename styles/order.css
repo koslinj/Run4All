@@ -1,3 +1,72 @@
+.order {
+  display: flex;
+  column-gap: 60px;
+  row-gap: 20px;
+}
+.order .login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 120%;
+  font-weight: 500;
+  padding: 10px;
+  width: 200px;
+  margin: 0 auto;
+  background: white;
+  border: 3px solid black;
+  transition-duration: 200ms;
+}
+.order .login-link:hover {
+  background: #9AFF91;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.order .admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 3px solid black;
+  padding: 0 60px 20px 60px;
+  background-color: rgba(154, 255, 145, 0.2);
+}
+.order .admin-form input {
+  font-size: 90%;
+  border-radius: 6px;
+  border: 3px solid black;
+  padding: 4px;
+  width: 300px;
+}
+.order .admin-form .main-label {
+  font-weight: 500;
+  font-size: 130%;
+}
+.order .admin-form label {
+  font-size: 110%;
+}
+.order .admin-form .order-nav-btns {
+  display: flex;
+  gap: 20px;
+}
+.order .admin-form .order-nav-btns button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  font-size: 120%;
+  font-weight: 500;
+  font-style: italic;
+  background-color: #9AFF91;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+.order .admin-form .order-nav-btns button:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
 .order .error-header {
   font-size: 140%;
   color: red;

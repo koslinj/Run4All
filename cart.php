@@ -17,7 +17,7 @@ include_once('components/navbar.php');
 
 <main class="cart">
     <h2>Koszyk</h2>
-    <?php if (isset($cart)): ?>
+    <?php if (!empty($cart)): ?>
         <?php foreach ($cart as $product): ?>
             <div class="product-in-cart">
                 <img src="<?= $product["path"] ?>" alt="Shoe images" width="160px"/>

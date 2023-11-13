@@ -1,6 +1,62 @@
 @import "globals";
 
 .order{
+  display: flex;
+  column-gap: 60px;
+  row-gap: 20px;
+
+  .login-link{
+    @include flex-center;
+    gap: 10px;
+    font-size: 120%;
+    font-weight: 500;
+    padding: 10px;
+    width: 200px;
+    margin: 0 auto;
+    background: white;
+    border: 3px solid black;
+    transition-duration: 200ms;
+
+    &:hover{
+      background: $basic_green;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .admin-form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 3px solid black;
+    padding: 0 60px 20px 60px;
+    background-color: $basic_green_half;
+
+    input {
+      font-size: 90%;
+      border-radius: 6px;
+      border: 3px solid black;
+      padding: 4px;
+      width: 300px;
+    }
+    .main-label{
+      font-weight: 500;
+      font-size: 130%;
+    }
+    label{
+      font-size: 110%;
+    }
+
+    .order-nav-btns{
+      display: flex;
+      gap: 20px;
+
+      button{
+        @include go-next-btn;
+      }
+    }
+
+  }
 
   .error-header{
     font-size: 140%;
