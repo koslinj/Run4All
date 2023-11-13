@@ -84,7 +84,6 @@ include_once('components/navbar.php');
             setInterval(function () {
                 // Move to the next image or loop back to the first one
                 currentIndex = (currentIndex + 1) % totalImages;
-                console.log(currentIndex)
 
                 // Animate the slider
                 images.forEach(function (image, index) {
