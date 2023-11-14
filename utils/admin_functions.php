@@ -9,6 +9,19 @@ function getAllProductsAdmin()
     return $products;
 }
 
+function getAllProductsByTypeAdmin($type)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM products as p 
+    JOIN sizes as s ON p.productId = s.productId
+    WHERE type = :type
+    GROUP BY p.productName");
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
+}
+
 function getAllProducersAdmin()
 {
     global $conn;
@@ -158,4 +171,30 @@ function getCategoriesByTypeAdmin($type)
     $stmt->execute();
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $categories;
+}
+
+function getAllSlidersAdmin($type)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM sliders AS s
+            JOIN products as p on s.productId = p.productId
+            WHERE type = :type ORDER BY sliderId");
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $sliders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $sliders;
+}
+
+function updateSliderAdmin($productId, $sliderId)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE sliders SET productId = :productId WHERE sliderId = :sliderId");
+    $stmt->bindParam(':productId', $productId);
+    $stmt->bindParam(':sliderId', $sliderId);
+    $stmt->execute();
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE productId = :productId");
+    $stmt->bindParam(':productId', $productId);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 }
