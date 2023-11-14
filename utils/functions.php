@@ -411,12 +411,13 @@ function getAllPayments()
     return $deliverers;
 }
 
-function getAllSliders()
+function getAllSliders($type)
 {
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM sliders AS s
             JOIN products as p on s.productId = p.productId
-            ORDER BY sliderId");
+            WHERE type = :type ORDER BY sliderId");
+    $stmt->bindParam(':type', $type);
     $stmt->execute();
     $sliders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sliders;

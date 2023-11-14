@@ -2,6 +2,10 @@
 
 .index {
 
+  h2{
+    margin-bottom: 0;
+  }
+
   .main-slider {
     width: 100%;
     overflow: hidden;
@@ -17,6 +21,7 @@
     width: 100%;
     overflow: hidden;
     position: relative;
+    margin: 0 0 40px 0;
 
     a {
       color: rgba(0, 0, 0, 0.7);
@@ -58,8 +63,8 @@
 
       img {
         object-fit: contain;
-        height: 380px;
-        width: 380px;
+        height: 300px;
+        width: 300px;
       }
     }
 
@@ -78,6 +83,7 @@
           padding: 0;
           position: relative;
           margin: 10px;
+          padding-bottom: 6px;
 
           &:hover {
             box-shadow: 0 0 6px 1px;
@@ -89,6 +95,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            text-decoration: none;
           }
 
           a:hover {
@@ -120,8 +127,8 @@
     .product-slider {
       .slider-container{
         img {
-          height: 280px;
-          width: 280px;
+          height: 220px;
+          width: 220px;
         }
       }
     }
@@ -133,8 +140,8 @@
     .product-slider {
       .slider-container{
         img {
-          height: 180px;
-          width: 180px;
+          height: 160px;
+          width: 160px;
         }
       }
     }
