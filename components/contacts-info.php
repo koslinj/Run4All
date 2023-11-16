@@ -36,7 +36,9 @@
 
         <button type="submit">Zapisz</button>
     </form>
-
+    <?php if(isset($error)): ?>
+        <h4 style="color: red; text-align: center"><?= $error ?></h4>
+    <?php endif; ?>
     <p class="field-type">Adresy email</p>
     <?php foreach ($emails as $email): ?>
         <div class="fields-and-edit">
@@ -54,7 +56,7 @@
             <input type="hidden" name="contactId" value="<?= $email["contactId"] ?>">
 
             <label>Email:<br>
-                <input size="13" type="text" name="value" value="<?= $email["value"] ?>">
+                <input size="13" type="email" name="value" value="<?= $email["value"] ?>">
             </label>
 
             <button type="submit">Zapisz</button>
@@ -67,7 +69,7 @@
         <input type="hidden" name="type" value="email">
 
         <label>Nowy Email:<br>
-            <input size="12" type="text" name="value">
+            <input size="12" type="email" name="value">
         </label>
 
         <button type="submit">Zapisz</button>

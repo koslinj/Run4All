@@ -16,6 +16,10 @@ if ($_SESSION['role'] === 'admin') {
 
 $user_id = $_SESSION['user_id'];
 
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['error'])) {
+    $error = $_GET["error"];
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["town"]) && isset($_POST["street"]) && isset($_POST["number"])) {
     // Retrieve the new values from the form
     $town = $_POST["town"];
@@ -43,7 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["value"])) {
         updateContact($contactId, $value);
     } else if (isset($_POST["type"])) {
         $type = $_POST["type"];
-        insertContact($user_id, $value, $type);
+        if($type == 'telefon'){
+            $phoneNumber = preg_replace('/[^0-9]/', '', $value);
+
+            if (strlen($phoneNumber) != 9) {
+                $error = "Nieprawidłowy numer Telefonu!";
+                header("Location: account.php?error=" . urlencode($error));
+                exit();
+            }
+        }
+        insertContact($user_id, $phoneNumber, $type);
     }
 
     header('Location: ' . $_SERVER['REQUEST_URI']);
@@ -82,6 +95,14 @@ include_once('components/navbar.php');
         Wyloguj się
     </a>
     <script src="jsActions/account.js"></script>
+    <script>
+        // Check if the error parameter is present in the URL
+        if (window.location.search.includes("error=")) {
+            // Use the history.replaceState method to remove the error parameter
+            const newUrl = window.location.href.replace(/\?error=[^&]*/, '');
+            history.replaceState({}, document.title, newUrl);
+        }
+    </script>
 </main>
 
 <?php
