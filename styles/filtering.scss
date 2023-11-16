@@ -33,7 +33,11 @@
 
     .filter-title{
       cursor: pointer;
-      border-bottom: 1px solid black;
+      border-bottom: 3px solid black;
+      border-radius: 10px;
+      font-weight: 600;
+      background-color: $basic_green;
+      padding: 4px 0 4px 10px;
       @include flex-between;
     }
 
