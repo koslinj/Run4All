@@ -9,6 +9,11 @@ if (empty($_SESSION['user_id'])) {
     exit();
 }
 
+if ($_SESSION['role'] === 'user') {
+    header("Location: account.php");
+    exit();
+}
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if file was uploaded without errors

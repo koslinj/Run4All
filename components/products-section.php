@@ -42,9 +42,13 @@
     </div>
     <form class="admin-form" action="admin-panel.php" method="post" enctype="multipart/form-data">
         <h3>Dodaj Produkt</h3>
-        <label class="main-label">
+        <label class="main-label", style="display: flex; flex-direction: column; align-items: flex-start">
             Wybierz Zdjęcie:<br>
-            <input style="width: 260px" type="file" name="image" required>
+            <div style="font-size: 90%; display: flex; gap: 10px; align-items: center; flex-wrap: wrap">
+                <div style="border-radius: 6px; border: 3px solid black; cursor: pointer; padding: 4px; background-color: white">Wybierz plik</div>
+                <div style="word-break: break-all" class="file-info" id="file-info"></div>
+            </div>
+            <input onchange="updateFileName(this)" style="display: none" type="file" name="image" required>
         </label>
 
         <label class="main-label">
@@ -104,4 +108,12 @@
 
         <button type="submit">Dodaj</button>
     </form>
+    <script>
+        function updateFileName(input) {
+            const fileDisplay = document.getElementById('file-info');
+            if (input.files.length > 0) {
+                fileDisplay.innerText = 'Wybrany plik: ' + input.files[0].name;
+            }
+        }
+    </script>
 </section>
