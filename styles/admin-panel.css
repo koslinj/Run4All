@@ -18,6 +18,9 @@ main.admin-panel .admin-section-promoted .promoted-admin-list .promoted-product 
   gap: 10px;
   margin-bottom: 10px;
 }
+main.admin-panel .admin-section-promoted .promoted-admin-list .promoted-product .slider-select {
+  font-size: 120%;
+}
 main.admin-panel .admin-section-promoted .promoted-admin-list .promoted-product img {
   border: 2px solid black;
 }
