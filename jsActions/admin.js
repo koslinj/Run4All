@@ -187,12 +187,24 @@ async function deleteSize(sizeId) {
     }
 }
 
+function validateSizeInput(value) {
+    // Regular expression to match numbers or letters S, M, L, X (case-insensitive)
+    const pattern = /^[0-9SMLX]+$/i;
+    return pattern.test(value);
+}
+
 async function insertSize(productId, type) {
     try {
         let url = "serverActions/insertSize.php"
 
         let sizeInput = document.getElementById("sizeInput" + productId);
-        let size = encodeURIComponent(sizeInput.value);
+        let size = sizeInput.value.trim();
+
+        if (validateSizeInput(size)) {
+            size = encodeURIComponent(size);
+        } else {
+            return alert("Zła wartość rozmiaru!");
+        }
 
         const response = await fetch(url, {
             method: "POST",
