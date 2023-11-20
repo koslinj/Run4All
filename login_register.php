@@ -10,23 +10,47 @@ if (!empty($_SESSION['user_id'])) {
     exit();
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['error'])) {
-    $error = $_GET["error"];
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['errorLogin'])) {
+    $errorLogin = $_GET["errorLogin"];
+}
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['errorRegister'])) {
+    $errorRegister = $_GET["errorRegister"];
+    if($errorRegister == "Udało się zarejestrować!"){
+        unset($errorRegister);
+        $success = "Udało się zarejestrować!";
+    }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['register'])) {
         // User clicked the registration button
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $name = $_POST['name'];
-        $surname = $_POST['surname'];
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+        $name = trim($_POST['name']);
+        $surname = trim($_POST['surname']);
 
         // Validate user input - perform additional validation as needed
+        if (!preg_match('/^[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $name)) {
+            $errorRegister = "Nieprawidłowe Imie!";
+            header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+            exit();
+        } elseif (!preg_match('/^[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $surname)) {
+            $errorRegister = "Nieprawidłowe Nazwisko!";
+            header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+            exit();
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errorRegister = "Nieprawidłowy Adres Email!";
+            header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+            exit();
+        } elseif (strlen($password) < 5){
+            $errorRegister = "Za krótkie hasło!";
+            header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+            exit();
+        }
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users (password_email, password, name, surname) VALUES (:email, :password, :name, :surname)";
+        $sql = "INSERT INTO users (password_email, password, name, surname, role) VALUES (:email, :password, :name, :surname, 'user')";
 
         $stmt = $conn->prepare($sql);
 
@@ -35,12 +59,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':surname', $surname);
 
-        try {
+        try{
             $stmt->execute();
-            echo "Registration successful. You can now log in.";
+            $errorRegister = "Udało się zarejestrować!";
+            header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+            exit();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            if ($e->getCode() == '23000'){
+                $errorRegister = "Taki email już istnieje!";
+                header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+                exit();
+            } else{
+                $errorRegister = "Nieznany błąd!";
+                header("Location: login_register.php?errorRegister=" . urlencode($errorRegister));
+                exit();
+            }
         }
+
+
     } elseif (isset($_POST['login'])) {
         // User clicked the login button
         $email = $_POST['login_email'];
@@ -77,8 +113,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
                 // Invalid login
-                $error = "Nieprawidłowy email lub hasło!";
-                header("Location: login_register.php?error=" . urlencode($error));
+                $errorLogin = "Nieprawidłowy email lub hasło!";
+                header("Location: login_register.php?errorLogin=" . urlencode($errorLogin));
                 exit();
             }
         } catch (PDOException $e) {
@@ -112,8 +148,8 @@ include_once('components/navbar.php');
                     <img src="images/login_icon.png" alt="Login Icon" width="30px">
                     Zaloguj się
                 </button>
-                <?php if(isset($error)): ?>
-                    <h4 style="color: red; text-align: center"><?= $error ?></h4>
+                <?php if(isset($errorLogin)): ?>
+                    <h4 style="color: red; text-align: center"><?= $errorLogin ?></h4>
                 <?php endif; ?>
             </form>
         </div>
@@ -136,14 +172,28 @@ include_once('components/navbar.php');
                     <img src="images/login_icon.png" alt="Login Icon" width="30px">
                     Utwórz konto
                 </button>
+                <?php if(isset($errorRegister)): ?>
+                    <h4 style="color: red; text-align: center"><?= $errorRegister ?></h4>
+                <?php endif; ?>
+                <?php if(isset($success)): ?>
+                    <h4 style="background-color: #9AFF91; text-align: center; padding: 10px; margin: 10px auto; border: 3px solid black">
+                        <?= $success ?>
+                    </h4>
+                <?php endif; ?>
             </form>
         </div>
     </div>
     <script>
         // Check if the error parameter is present in the URL
-        if (window.location.search.includes("error=")) {
+        if (window.location.search.includes("errorLogin=")) {
             // Use the history.replaceState method to remove the error parameter
-            const newUrl = window.location.href.replace(/\?error=[^&]*/, '');
+            const newUrl = window.location.href.replace(/\?errorLogin=[^&]*/, '');
+            history.replaceState({}, document.title, newUrl);
+        }
+        // Check if the error parameter is present in the URL
+        if (window.location.search.includes("errorRegister=")) {
+            // Use the history.replaceState method to remove the error parameter
+            const newUrl = window.location.href.replace(/\?errorRegister=[^&]*/, '');
             history.replaceState({}, document.title, newUrl);
         }
     </script>
