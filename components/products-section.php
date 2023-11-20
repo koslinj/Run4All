@@ -19,9 +19,11 @@
                 <div id="deleteModal_<?= $product['productId'] ?>" class="modal">
                     <div class="modal-content">
                         <span class="close" onclick="closeModal(<?= $product['productId'] ?>)">&times;</span>
-                        <p>Are you sure you want to delete this product?</p>
-                        <button onclick="confirmDelete(<?= $product['productId'] ?>)">Yes</button>
-                        <button onclick="closeModal(<?= $product['productId'] ?>)">No</button>
+                        <p>Na pewno chcesz usunąć <strong><?= $product['productName'] ?></strong> ?</p>
+                        <div class="modal-btns">
+                            <button class="modal-yes" onclick="confirmDelete(<?= $product['productId'] ?>)">TAK</button>
+                            <button class="modal-no" onclick="closeModal(<?= $product['productId'] ?>)">NIE</button>
+                        </div>
                     </div>
                 </div>
             </div>
