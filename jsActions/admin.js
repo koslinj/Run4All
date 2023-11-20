@@ -191,14 +191,15 @@ async function insertSize(productId, type) {
     try {
         let url = "serverActions/insertSize.php"
 
-        let size = document.getElementById("sizeInput" + productId).value;
+        let sizeInput = document.getElementById("sizeInput" + productId);
+        let size = encodeURIComponent(sizeInput.value);
 
         const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
             },
-            body: "productId=" + productId + "&size=" + size + "&type=" + type, // Send the data
+            body: "productId=" + encodeURIComponent(productId) + "&size=" + size + "&type=" + encodeURIComponent(type),
         });
         console.log(response)
 
@@ -212,7 +213,7 @@ async function insertSize(productId, type) {
         // Create a new change-product-item element
         const newChangeProductItem = document.createElement('div');
         newChangeProductItem.classList.add('change-product-item');
-        newChangeProductItem.id = "size-item-" + sizeId // TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        newChangeProductItem.id = "size-item-" + sizeId
         newChangeProductItem.textContent = size;
 
         // Create the trash icon
@@ -223,7 +224,7 @@ async function insertSize(productId, type) {
 
         // Add the click event to delete the size
         trashIcon.addEventListener('click', function() {
-            deleteSize(sizeId); // TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+            deleteSize(sizeId);
         });
 
         // Append the trash icon to the new element
