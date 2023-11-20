@@ -75,6 +75,11 @@
         </label>
 
         <label class="main-label">
+            Opis Produktu:<br>
+            <textarea style="font-size: 90%; border: 3px solid black" id="w3review" name="description" rows="4" cols="40"></textarea>
+        </label>
+
+        <label class="main-label">
             Cena:<br>
             <input type="number" name="price" step="0.01" required>
         </label>

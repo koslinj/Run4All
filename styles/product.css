@@ -1,9 +1,27 @@
+.product-description {
+  text-align: center;
+  margin: 0 auto 30px auto;
+  max-width: 800px;
+}
+.product-description p {
+  font-size: 160%;
+  font-style: italic;
+  color: #666666;
+}
+.product-description h4 {
+  font-size: 160%;
+}
+
 .product {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
+}
+.product .image-part img {
+  max-height: 500px;
+  object-fit: contain;
 }
 .product .desc-part h2 {
   font-size: 160%;
@@ -16,7 +34,7 @@
 }
 .product .desc-part .categories {
   margin: 20px 0 0 0;
-  font-size: 110%;
+  font-size: 130%;
 }
 .product .desc-part .categories a {
   margin-right: 20px;

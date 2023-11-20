@@ -76,15 +76,16 @@ function updatePriceAdmin($price, $id)
     $stmt->execute();
 }
 
-function insertProductAdmin($id, $name, $price, $path)
+function insertProductAdmin($id, $name, $price, $path, $description)
 {
     global $conn;
-    $sql = "INSERT INTO products(producerId, productName, price, path) VALUES(:id, :name, :price, :path)";
+    $sql = "INSERT INTO products(producerId, productName, price, path, description) VALUES(:id, :name, :price, :path, :desc)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':price', $price);
     $stmt->bindParam(':path', $path);
+    $stmt->bindParam(':desc', $description);
     $stmt->execute();
     return $conn->lastInsertId();
 }

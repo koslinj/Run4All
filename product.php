@@ -47,6 +47,10 @@ include_once('components/navbar.php');
         <script src="jsActions/filtering.js"></script>
         <script src="jsActions/cart.js"></script>
     </main>
+    <div class="product-description">
+        <p>Opis produktu:</p>
+        <h4><?= $product["description"] ?></h4>
+    </div>
 <?php else: ?>
     <h2>Nie znaleziono produktu</h2>
 <?php endif; ?>

@@ -35,11 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sizes = $_POST["size"];
             $category = $_POST["category"];
             $colors = $_POST["color"];
-            echo $category . "<br>";
-            var_dump($colors);
+            $description = $_POST['description'];
 
             // Now you can store the path in your database
-            $insertId = insertProductAdmin($id, $name, $price, $target_file);
+            $insertId = insertProductAdmin($id, $name, $price, $target_file, $description);
             insertSizesAdmin($insertId, $sizes, $type);
             insertCategoryAdmin($category, $insertId);
             insertColorsAdmin($colors, $insertId);
