@@ -67,6 +67,15 @@ function updateStatusAdmin($status, $id)
     $stmt->execute();
 }
 
+function updatePriceAdmin($price, $id)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE products SET price = :price WHERE productId = :id");
+    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
+
 function insertProductAdmin($id, $name, $price, $path)
 {
     global $conn;

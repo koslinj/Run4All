@@ -200,7 +200,7 @@ async function insertSize(productId, type) {
         let sizeInput = document.getElementById("sizeInput" + productId);
         let size = sizeInput.value.trim();
 
-        if (validateSizeInput(size)) {
+        if (validateSizeInput(size) && size.length > 0) {
             size = encodeURIComponent(size);
         } else {
             return alert("Zła wartość rozmiaru!");
@@ -216,7 +216,7 @@ async function insertSize(productId, type) {
         console.log(response)
 
         if (!response.ok) {
-            throw new Error("Error deleting the product: " + response.status);
+            throw new Error("Error inserting size of the product: " + response.status);
         }
 
         let sizeId = await response.text();
@@ -247,6 +247,47 @@ async function insertSize(productId, type) {
         changeProductList.appendChild(newChangeProductItem);
 
         document.getElementById("sizeInput" + productId).value = ''
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function validatePriceInput(value) {
+    // Regular expression to match numbers or letters S, M, L, X (case-insensitive)
+    const pattern = /^[\d.]+$/i;
+    return pattern.test(value);
+}
+
+async function updatePrice(productId) {
+    try {
+        let url = "serverActions/updatePrice.php"
+
+        let priceInput = document.getElementById("priceInput" + productId);
+        let price = priceInput.value.trim();
+
+        if (validatePriceInput(price) && price.length>0) {
+            price = encodeURIComponent(price);
+        } else {
+            return alert("Zła wartość ceny!");
+        }
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded", // Set the appropriate content type
+            },
+            body: "productId=" + encodeURIComponent(productId) + "&price=" + price,
+        });
+        console.log(response)
+
+        if (!response.ok) {
+            throw new Error("Error changing price of the product: " + response.status);
+        }
+
+        document.getElementById("priceInput" + productId).value = ''
+        let priceLabel = document.getElementById("price-label" + productId);
+        priceLabel.textContent = "Cena: " + price + "zł";
 
     } catch (error) {
         console.error(error);

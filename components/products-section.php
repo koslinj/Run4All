@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div id="edit-form-product<?= $product['productId'] ?>" style="display: none" class="edit-product-admin">
-                <label>Rozmiary:<br>
+                <label><b>Rozmiary:</b><br>
                     <div class="change-product-list">
                         <?php
                         $sizes = getSizesByProductIdAdmin($product['productId']);
@@ -42,8 +42,16 @@
                 </label>
                 <form onsubmit="event.preventDefault(); insertSize(<?= $product['productId'] ?>, '<?= getTypeByProductIdAdmin($product['productId']) ?>')">
                     <label>
-                        Dodaj Rozmiar:<br>
+                        <b>Dodaj Rozmiar:</b><br>
                         <input type="text" name="sizeInput" id="sizeInput<?= $product['productId'] ?>" required>
+                        <button type="submit">Zapisz</button>
+                    </label>
+                </form>
+                <p style="margin-bottom: 0px; font-size: 110%"><b id="price-label<?= $product['productId'] ?>">Cena: <?= $product['price'] ?>zł</b></p>
+                <form onsubmit="event.preventDefault(); updatePrice(<?= $product['productId'] ?>)">
+                    <label>
+                        <b>Zmień cenę:</b><br>
+                        <input type="number" step="0.01" name="priceInput" id="priceInput<?= $product['productId'] ?>" required>
                         <button type="submit">Zapisz</button>
                     </label>
                 </form>
