@@ -38,7 +38,6 @@
   margin: 10px auto;
 }
 .products-page .right .product-on-list .product-image {
-  min-height: 200px;
   object-fit: contain;
 }
 .products-page .right .product-on-list .product-price {
@@ -80,6 +79,10 @@
   }
   .products-page .right .list .product-on-list {
     width: 49%;
+  }
+  .products-page .right .list .product-on-list .product-image {
+    max-width: 130px;
+    margin: 0 auto;
   }
 }
 
