@@ -44,19 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["value"])) {
 
     if (isset($_POST["contactId"])) {
         $contactId = $_POST["contactId"];
+        $typeFromDB = getContactByContactId($contactId)["type"];
+        $value = validate($typeFromDB, $value);
         updateContact($contactId, $value);
     } else if (isset($_POST["type"])) {
         $type = $_POST["type"];
-        if($type == 'telefon'){
-            $phoneNumber = preg_replace('/[^0-9]/', '', $value);
-
-            if (strlen($phoneNumber) != 9) {
-                $error = "Nieprawidłowy numer Telefonu!";
-                header("Location: account.php?error=" . urlencode($error));
-                exit();
-            }
-        }
-        insertContact($user_id, $phoneNumber, $type);
+        $value = validate($type, $value);
+        insertContact($user_id, $value, $type);
     }
 
     header('Location: ' . $_SERVER['REQUEST_URI']);

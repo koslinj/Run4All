@@ -280,6 +280,17 @@ function deleteContact(int $id)
     $stmt->execute();
 }
 
+function getContactByContactId(int $id)
+{
+    global $conn;
+    $sql = "SELECT * FROM contacts WHERE contactId = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $contacts[0];
+}
+
 function updateContact(int $contactId, $value)
 {
     global $conn;
@@ -421,4 +432,26 @@ function getAllSliders($type)
     $stmt->execute();
     $sliders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sliders;
+}
+
+function validate($type, $value)
+{
+    if ($type == 'telefon') {
+        $value = preg_replace('/[^0-9]/', '', $value);
+
+        if (strlen($value) != 9) {
+            $error = "Nieprawidłowy numer Telefonu!";
+            header("Location: account.php?error=" . urlencode($error));
+            exit();
+        }
+    } elseif ($type == 'email') {
+        $value = trim($value);
+
+        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            $error = "Nieprawidłowy Adres Email!";
+            header("Location: account.php?error=" . urlencode($error));
+            exit();
+        }
+    }
+    return $value;
 }

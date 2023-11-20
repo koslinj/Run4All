@@ -36,9 +36,6 @@
 
         <button type="submit">Zapisz</button>
     </form>
-    <?php if(isset($error)): ?>
-        <h4 style="color: red; text-align: center"><?= $error ?></h4>
-    <?php endif; ?>
     <p class="field-type">Adresy email</p>
     <?php foreach ($emails as $email): ?>
         <div class="fields-and-edit">
@@ -74,4 +71,7 @@
 
         <button type="submit">Zapisz</button>
     </form>
+    <?php if(isset($error)): ?>
+        <h4 style="color: red; text-align: center"><?= $error ?></h4>
+    <?php endif; ?>
 </div>
