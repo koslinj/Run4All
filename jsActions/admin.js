@@ -1,3 +1,22 @@
+// Function to open the modal
+function openModal(productId) {
+    document.getElementById("deleteModal_" + productId).style.display = "block";
+}
+
+// Function to close the modal
+function closeModal(productId) {
+    document.getElementById("deleteModal_" + productId).style.display = "none";
+}
+
+// Function to confirm delete after user clicks "Yes" in the modal
+async function confirmDelete(productId) {
+    // Close the modal
+    closeModal(productId);
+
+    // Call your deleteProduct function here
+    await deleteProduct(productId);
+}
+
 async function deleteProduct(productId) {
     try {
         let url = "serverActions/deleteProduct.php"

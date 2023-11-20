@@ -13,9 +13,17 @@
                 <button onclick="toggleProductForm(<?= $product['productId'] ?>)" class="trash-btn">
                     <img src="images/edit_icon.png" alt="Edit Icon" width="30px">
                 </button>
-                <button onclick="deleteProduct(<?= $product['productId'] ?>)" class="trash-btn">
+                <button onclick="openModal(<?= $product['productId'] ?>)" class="trash-btn">
                     <img src="images/trash_icon.png" alt="Trash Icon" width="30px">
                 </button>
+                <div id="deleteModal_<?= $product['productId'] ?>" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal(<?= $product['productId'] ?>)">&times;</span>
+                        <p>Are you sure you want to delete this product?</p>
+                        <button onclick="confirmDelete(<?= $product['productId'] ?>)">Yes</button>
+                        <button onclick="closeModal(<?= $product['productId'] ?>)">No</button>
+                    </div>
+                </div>
             </div>
             <div id="edit-form-product<?= $product['productId'] ?>" style="display: none" class="edit-product-admin">
                 <label>Rozmiary:<br>
