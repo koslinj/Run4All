@@ -35,23 +35,25 @@ include_once('components/navbar.php');
                     <p><?= $product["price"] ?> zł</p>
                     <i>Cena</i>
                 </div>
-                <div>
-                    <p id="quantity_<?= $product["productId"] . $product["size"] ?>">
-                        <?= $product["quantity"] ?>
-                    </p>
-                    <i>Ilość</i>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <div>
+                        <p id="quantity_<?= $product["productId"] . $product["size"] ?>">
+                            <?= $product["quantity"] ?>
+                        </p>
+                        <i>Ilość</i>
+                    </div>
+                    <div class="quantity-handler">
+                        <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, '<?= $product['size']; ?>', 'increment')"
+                             src="images/up_arrow_icon.png" alt="Up Arrow Icon" width="30px">
+                        <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, '<?= $product['size']; ?>', 'decrement')"
+                             src="images/down_arrow_icon.png" alt="Down Arrow Icon" width="30px">
+                    </div>
                 </div>
                 <div>
                     <p id="full_<?= $product["productId"] . $product["size"] ?>">
                         <?= number_format($product["quantity"] * $product["price"], 2) ?> zł
                     </p>
                     <i>Łącznie</i>
-                </div>
-                <div class="quantity-handler">
-                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, '<?= $product['size']; ?>', 'increment')"
-                         src="images/up_arrow_icon.png" alt="Up Arrow Icon" width="30px">
-                    <img onclick="changeQuantity(<?= $product['productId']; ?>, <?= $product['price']; ?>, '<?= $product['size']; ?>', 'decrement')"
-                         src="images/down_arrow_icon.png" alt="Down Arrow Icon" width="30px">
                 </div>
             </div>
         <?php endforeach; ?>

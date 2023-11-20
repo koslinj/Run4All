@@ -34,7 +34,7 @@
 .cart .product-in-cart .quantity-handler {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 .cart .product-in-cart .quantity-handler img {
   border: 1px solid black;
