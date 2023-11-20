@@ -13,7 +13,7 @@
   }
 
   .second-nav {
-    font-size: 120%;
+    font-size: 130%;
     border-top: 2px solid gray;
     padding: 0 10px;
     border-bottom: 2px solid gray;
@@ -29,17 +29,13 @@
         content: "";
         background: green;
         width: 90%;
-        height: 2px;
+        height: 3px;
         position: absolute;
         border-radius: 1px;
         bottom: 4px;
         left: 5%;
       }
     }
-  }
-
-  a:last-of-type .nav-category {
-    color: red;
   }
 
   .nav-icons {

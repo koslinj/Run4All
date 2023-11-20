@@ -58,10 +58,5 @@
                 Akcesoria
             </div>
         </a>
-        <a href="">
-            <div class="nav-category">
-                Wyprzedaż
-            </div>
-        </a>
     </div>
 </nav>
