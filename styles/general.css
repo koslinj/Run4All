@@ -1,3 +1,17 @@
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../run4all/fonts/roboto-v30-latin-ext-regular.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../run4all/fonts/roboto-v30-latin-ext-500.woff2") format("woff2");
+}
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
